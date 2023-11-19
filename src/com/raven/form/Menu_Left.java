@@ -25,13 +25,36 @@ public class Menu_Left extends javax.swing.JPanel {
     private void init() {
         sp.setVerticalScrollBar(new ScrollBar());
         menuList.setLayout(new MigLayout("fillx", "0[]0", "0[]0"));
-        showPeople();
+        showMessage();
     }
     
-    private void showPeople() {
-        for (int i = 0; i < 20; i++) {
+    private void showMessage() {
+        menuList.removeAll();
+        for (int i = 0; i < 5; i++) {
             menuList.add(new item_People("People " + i), "wrap");
         }
+        refreshMenuList();
+    }
+    
+    private void showGroup() {
+        menuList.removeAll();
+        for (int i = 0; i < 5; i++) {
+            menuList.add(new item_People("Group " + i), "wrap");
+        }
+        refreshMenuList();
+    }
+    
+    private void showBox() {
+        menuList.removeAll();
+        for (int i = 0; i < 20; i++) {
+            menuList.add(new item_People("Box " + i), "wrap");
+        }
+        refreshMenuList();
+    }
+    
+    private void refreshMenuList() {
+        menuList.repaint();
+        menuList.revalidate();
     }
 
     /**
@@ -51,12 +74,12 @@ public class Menu_Left extends javax.swing.JPanel {
         sp = new javax.swing.JScrollPane();
         menuList = new javax.swing.JLayeredPane();
 
-        setBackground(new java.awt.Color(239, 239, 239));
+        setBackground(new java.awt.Color(230, 230, 230));
 
         jLabel1.setText("Menu Left note");
 
         menu.setOpaque(true);
-        menu.setLayout(new javax.swing.BoxLayout(menu, javax.swing.BoxLayout.LINE_AXIS));
+        menu.setLayout(new java.awt.GridLayout(1, 3));
 
         menuMessage.setIconSelected(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/message_selected.png"))); // NOI18N
         menuMessage.setIconSimple(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/message.png"))); // NOI18N
@@ -135,21 +158,30 @@ public class Menu_Left extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMessageActionPerformed
-        menuMessage.setSelected(true);
-        menuGroup.setSelected(false);
-        menuBox.setSelected(false);
+        if (!menuMessage.isSelected()) {
+            menuMessage.setSelected(true);
+            menuGroup.setSelected(false);
+            menuBox.setSelected(false);
+            showMessage();
+        }
     }//GEN-LAST:event_menuMessageActionPerformed
 
     private void menuGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGroupActionPerformed
-        menuMessage.setSelected(false);
-        menuGroup.setSelected(true);
-        menuBox.setSelected(false);
+        if (!menuGroup.isSelected()) {
+            menuMessage.setSelected(false);
+            menuGroup.setSelected(true);
+            menuBox.setSelected(false);
+            showGroup();
+        }
     }//GEN-LAST:event_menuGroupActionPerformed
 
     private void menuBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBoxActionPerformed
-        menuMessage.setSelected(false);
-        menuGroup.setSelected(false);
-        menuBox.setSelected(true);
+        if (!menuBox.isSelected()) {
+            menuMessage.setSelected(false);
+            menuGroup.setSelected(false);
+            menuBox.setSelected(true);
+            showBox();
+        }
     }//GEN-LAST:event_menuBoxActionPerformed
 
 
