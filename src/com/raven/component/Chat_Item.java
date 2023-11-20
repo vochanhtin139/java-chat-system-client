@@ -5,11 +5,13 @@
 package com.raven.component;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.border.EmptyBorder;
@@ -39,7 +41,7 @@ public class Chat_Item extends javax.swing.JLayeredPane {
     public void setTime(String time) {
         JLayeredPane layer = new JLayeredPane();
         layer.setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
-        layer.setBorder(new EmptyBorder(0, 5, 10, 5));
+        layer.setBorder(new EmptyBorder(0, 5, 20, 5));
         label = new JLabel(time);
         label.setForeground(new Color(110, 110, 100));
         label.setHorizontalTextPosition(JLabel.LEFT);
@@ -57,6 +59,22 @@ public class Chat_Item extends javax.swing.JLayeredPane {
         if (label != null) {
             label.setIcon(new ImageIcon(getClass().getResource("/com/raven/icon/double_tick.png")));
         }
+    }
+    
+    public void setUserProfile(String user) {
+        JLayeredPane layer = new JLayeredPane();
+        layer.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        layer.setBorder(new EmptyBorder(10, 10, 0, 10));
+        JButton cmd = new JButton(user);
+        cmd.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        cmd.setBorder(null);
+        cmd.setContentAreaFilled(false);
+        cmd.setFocusable(false);
+        cmd.setForeground(new Color(30, 121, 213));
+        cmd.setFont(new java.awt.Font("sansserif", 1, 14));
+        txt.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        layer.add(cmd);
+        add(layer, 0);
     }
     
     /**
