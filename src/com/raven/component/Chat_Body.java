@@ -6,6 +6,8 @@ package com.raven.component;
 
 import com.raven.swing.ScrollBar;
 import java.awt.Color;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JScrollBar;
 import net.miginfocom.swing.MigLayout;
 
@@ -35,11 +37,12 @@ public class Chat_Body extends javax.swing.JPanel {
         addItemRight("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
         addDate("yesterday");
         addItemLeft("hellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsd", "Chanh Tin");
-        addItemRight("hellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsd");
+        addItemRight("hellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsd", new ImageIcon(getClass().getResource("/com/raven/icon/rainbow.jpeg")));
         addItemRight("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
-        addItemLeft("hellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsd", "Chanh Tin");
+        addItemLeft("hellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsd", "Chanh Tin", new ImageIcon(getClass().getResource("/com/raven/icon/profile.png")));
         addDate("today");
         addItemRight("ABCsdfgsdfgsdfgsSDFS");
+        addItemLeft("", "daniel", new ImageIcon(getClass().getResource("/com/raven/icon/rainbow.jpeg")), new ImageIcon(getClass().getResource("/com/raven/icon/rainbow.jpeg")));
     }
     
     private void init() {
@@ -48,18 +51,21 @@ public class Chat_Body extends javax.swing.JPanel {
         sp.getVerticalScrollBar().setBackground(Color.WHITE);
     }
     
-    public void addItemLeft(String text, String user) {
+    public void addItemLeft(String text, String user, Icon... image) {
         Chat_Left_With_Profile item = new Chat_Left_With_Profile();
         item.setUserProfile(user);
         item.setText(text);
+        item.setImage(image);
+        item.setTime();
         body.add(item, "wrap, w 100::80%");
         body.repaint();
         body.revalidate();
     }
     
-    public void addItemRight(String text) {
+    public void addItemRight(String text, Icon... image) {
         Chat_Right item = new Chat_Right();
         item.setText(text);
+        item.setImage(image);
         body.add(item, "wrap, al right, w 100::80%");
         body.repaint();
         body.revalidate();

@@ -5,6 +5,7 @@
 package com.raven.component;
 
 import java.awt.Color;
+import javax.swing.Icon;
 
 /**
  *
@@ -21,9 +22,22 @@ public class Chat_Left extends javax.swing.JLayeredPane {
     }
     
     public void setText(String text) {
-        txt.setText(text);
-        txt.setTime("11:55 AM");
+        if (text.equals("")) {
+            txt.hideText();
+        }
+        else {
+            txt.setText(text);
+        }
+        
         txt.sendSuccess();
+    }
+    
+    public void setImage(Icon... image) {
+        txt.setImage(false, image);
+    }
+    
+    public void setTime() {
+        txt.setTime("11:55 AM");
     }
 
     /**
