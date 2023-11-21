@@ -25,9 +25,6 @@ public class Chat_Item extends javax.swing.JLayeredPane {
     
     private JLabel label;
 
-    /**
-     * Creates new form Chat_Item
-     */
     public Chat_Item() {
         initComponents();
         txt.setEditable(false);
