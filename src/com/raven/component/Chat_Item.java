@@ -39,7 +39,7 @@ public class Chat_Item extends javax.swing.JLayeredPane {
     public void setTime(String time) {
         JLayeredPane layer = new JLayeredPane();
         layer.setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
-        layer.setBorder(new EmptyBorder(0, 5, 20, 5));
+        layer.setBorder(new EmptyBorder(0, 5, 5, 5));
         label = new JLabel(time);
         label.setForeground(new Color(110, 110, 100));
         label.setHorizontalTextPosition(JLabel.LEFT);
@@ -73,6 +73,15 @@ public class Chat_Item extends javax.swing.JLayeredPane {
         add(layer);
     }
     
+    public void setFile(String fileName, String fileSize) {
+        JLayeredPane layer = new JLayeredPane();
+        layer.setLayout(new FlowLayout(FlowLayout.LEFT));
+        layer.setBorder(new EmptyBorder(0, 5, 0, 5));
+        Chat_File chatFile = new Chat_File();
+        chatFile.setFile(fileName, fileSize);
+        layer.add(chatFile);
+        add(layer);
+    }
     public void seen() {
         if (label != null) {
             label.setIcon(new ImageIcon(getClass().getResource("/com/raven/icon/double_tick.png")));

@@ -25,7 +25,7 @@ public class Chat_Body extends javax.swing.JPanel {
         init();
         addDate("18/11/2023");
         addItemRight("Lorem Ipsum");
-        addItemLeft("hellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsd", "Chanh Tin");
+        addItemLeft("hellofsfsdfsdofsffsfsdfsd", "Chanh Tin");
         addItemRight("hellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsd");
         addItemLeft("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", "Chanh Tin");
         addDate("19/11/2023");
@@ -44,6 +44,11 @@ public class Chat_Body extends javax.swing.JPanel {
         addDate("today");
         addItemRight("ABCsdfgsdfgsdfgsSDFS");
         addItemLeft("", "daniel", new ImageIcon(getClass().getResource("/com/raven/icon/rainbow.jpeg")), new ImageIcon(getClass().getResource("/com/raven/icon/rainbow.jpeg")));
+        addItemFile("this is my file", "Chanh Tin", "my-file.pdf", "4 MB");
+        addItemFileRight("file", "123pfls.txt", "100 KB");
+        addItemRight("hellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsd", new ImageIcon(getClass().getResource("/com/raven/icon/rainbow.jpeg")));
+        addItemLeft("hellofsfsdfsdofsffsfsdfsd", "Chanh Tin");
+        addItemLeft("hellofsfsdfsdofsffsfsdfsd", "Chanh Tin");
     }
     
     private void init() {
@@ -74,6 +79,18 @@ public class Chat_Body extends javax.swing.JPanel {
         body.revalidate();
     }
     
+    public void addItemFile(String text, String user, String fileName, String fileSize) {
+        Chat_Left_With_Profile item = new Chat_Left_With_Profile();
+        item.setText(text);
+        item.setFile(fileName, fileSize);
+        item.setTime();
+        item.setUserProfile(user);
+        body.add(item, "wrap, w 100::80%");
+        //  ::80% set max with 80%
+        body.repaint();
+        body.revalidate();
+    }
+    
     public void addItemRight(String text, Icon... image) {
         Chat_Right item = new Chat_Right();
         item.setText(text);
@@ -83,6 +100,15 @@ public class Chat_Body extends javax.swing.JPanel {
         body.revalidate();
     }
     
+    public void addItemFileRight(String text, String fileName, String fileSize) {
+        Chat_Right item = new Chat_Right();
+        item.setText(text);
+        item.setFile(fileName, fileSize);
+        body.add(item, "wrap, al right, w 100::80%");
+        //  ::80% set max with 80%
+        body.repaint();
+        body.revalidate();
+    }
     public void addDate(String date) {
         Chat_Date item = new Chat_Date();
         item.setDate(date);

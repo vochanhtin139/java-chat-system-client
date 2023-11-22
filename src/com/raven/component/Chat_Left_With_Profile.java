@@ -18,11 +18,11 @@ public class Chat_Left_With_Profile extends javax.swing.JLayeredPane {
      */
     public Chat_Left_With_Profile() {
         initComponents();
-        txt.setBackground(new Color(242, 242, 242));
+        chat_Item1.setBackground(new Color(242, 242, 242));
     }
     
     public void setUserProfile(String user) {
-        txt.setUserProfile(user);
+        chat_Item1.setUserProfile(user);
     }
     
     public void setImageProfile(Icon image) {
@@ -31,25 +31,29 @@ public class Chat_Left_With_Profile extends javax.swing.JLayeredPane {
     
     public void setText(String text) {
         if (text.equals("")) {
-            txt.hideText();
+            chat_Item1.hideText();
         }
         else {
-            txt.setText(text);
+            chat_Item1.setText(text);
         }
         
-        txt.sendSuccess();
+        chat_Item1.sendSuccess();
     }
     
     public void setImage(Icon... image) {
-        txt.setImage(false, image);
+        chat_Item1.setImage(false, image);
     }
     
     public void setImage(String... image) {
-        txt.setImage(false, image);
+        chat_Item1.setImage(false, image);
+    }
+    
+    public void setFile(String fileName, String fileSize) {
+        chat_Item1.setFile(fileName, fileSize);
     }
     
     public void setTime() {
-        txt.setTime("11:55 AM");
+        chat_Item1.setTime("11:55 AM");
     }
 
     /**
@@ -63,7 +67,7 @@ public class Chat_Left_With_Profile extends javax.swing.JLayeredPane {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         lalImage = new com.raven.swing.ImageAvatar();
-        txt = new com.raven.component.Chat_Item();
+        chat_Item1 = new com.raven.component.Chat_Item();
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
@@ -71,6 +75,7 @@ public class Chat_Left_With_Profile extends javax.swing.JLayeredPane {
         lalImage.setImage(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/profile.png"))); // NOI18N
 
         jLayeredPane1.setLayer(lalImage, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(chat_Item1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -79,24 +84,27 @@ public class Chat_Left_With_Profile extends javax.swing.JLayeredPane {
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lalImage, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chat_Item1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lalImage, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chat_Item1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lalImage, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         add(jLayeredPane1);
-        add(txt);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.raven.component.Chat_Item chat_Item1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private com.raven.swing.ImageAvatar lalImage;
-    private com.raven.component.Chat_Item txt;
     // End of variables declaration//GEN-END:variables
 }
