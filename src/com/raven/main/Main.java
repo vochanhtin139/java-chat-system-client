@@ -69,6 +69,7 @@ public class Main extends javax.swing.JFrame {
         cmdMinimize = new javax.swing.JButton();
         cmdClose = new javax.swing.JButton();
         body = new javax.swing.JLayeredPane();
+        login = new com.raven.form.Login();
         view_Image = new com.raven.form.View_Image();
         home = new com.raven.form.Home();
 
@@ -134,6 +135,7 @@ public class Main extends javax.swing.JFrame {
         );
 
         body.setLayout(new java.awt.CardLayout());
+        body.add(login, "card4");
         body.setLayer(view_Image, javax.swing.JLayeredPane.POPUP_LAYER);
         body.add(view_Image, "card3");
         body.add(home, "card2");
@@ -245,6 +247,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton cmdClose;
     private javax.swing.JButton cmdMinimize;
     private com.raven.form.Home home;
+    private com.raven.form.Login login;
     private javax.swing.JPanel title;
     private com.raven.form.View_Image view_Image;
     // End of variables declaration//GEN-END:variables
