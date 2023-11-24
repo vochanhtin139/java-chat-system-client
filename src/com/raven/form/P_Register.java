@@ -10,12 +10,12 @@ import com.raven.event.PublicEvent;
  *
  * @author ADMIN
  */
-public class P_Login extends javax.swing.JPanel {
+public class P_Register extends javax.swing.JPanel {
 
     /**
-     * Creates new form P_Login
+     * Creates new form P_Register
      */
-    public P_Login() {
+    public P_Register() {
         initComponents();
     }
 
@@ -28,64 +28,70 @@ public class P_Login extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtPass = new javax.swing.JPasswordField();
+        cmdRegister = new javax.swing.JButton();
+        cmdBackLogin = new javax.swing.JButton();
+        txtUser = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtUser = new javax.swing.JTextField();
-        txtPass = new javax.swing.JPasswordField();
-        cmdLogin = new javax.swing.JButton();
-        cmdRegister = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        txtRePassword = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 153, 153));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("LOGIN");
-
-        jLabel2.setText("User Name");
-
-        jLabel3.setText("Password");
-
-        cmdLogin.setText("Login");
-        cmdLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmdLoginActionPerformed(evt);
-            }
-        });
-
-        cmdRegister.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        cmdRegister.setForeground(new java.awt.Color(0, 51, 204));
         cmdRegister.setText("Register");
-        cmdRegister.setContentAreaFilled(false);
         cmdRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdRegisterActionPerformed(evt);
             }
         });
 
+        cmdBackLogin.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        cmdBackLogin.setForeground(new java.awt.Color(0, 51, 204));
+        cmdBackLogin.setText("Back to Login");
+        cmdBackLogin.setContentAreaFilled(false);
+        cmdBackLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBackLoginActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("REGISTER");
+
+        jLabel2.setText("User Name");
+
+        jLabel3.setText("Password");
+
+        jLabel4.setText("Confirm Password");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmdBackLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                     .addComponent(cmdRegister, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmdLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtPass, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtUser))
+                    .addComponent(txtUser)
+                    .addComponent(txtRePassword, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -94,29 +100,35 @@ public class P_Login extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmdLogin)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtRePassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmdRegister)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmdBackLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
-        PublicEvent.getInstance().getEventLogin().login();
-    }//GEN-LAST:event_cmdLoginActionPerformed
-
     private void cmdRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRegisterActionPerformed
-        PublicEvent.getInstance().getEventLogin().goRegister();
+        PublicEvent.getInstance().getEventLogin().register();
     }//GEN-LAST:event_cmdRegisterActionPerformed
+
+    private void cmdBackLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBackLoginActionPerformed
+       PublicEvent.getInstance().getEventLogin().goLogin();
+    }//GEN-LAST:event_cmdBackLoginActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cmdLogin;
+    private javax.swing.JButton cmdBackLogin;
     private javax.swing.JButton cmdRegister;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPasswordField txtPass;
+    private javax.swing.JPasswordField txtRePassword;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,7 +4,9 @@
  */
 package com.raven.main;
 
+import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
 import com.raven.event.EventImageView;
+import com.raven.event.EventMain;
 import com.raven.event.PublicEvent;
 import com.raven.swing.ComponentResizer;
 import java.awt.Dimension;
@@ -34,23 +36,36 @@ public class Main extends javax.swing.JFrame {
         com.setMinimumSize(new Dimension(800, 500));
         com.setMaximumSize(Toolkit.getDefaultToolkit().getScreenSize());
         com.setSnapSize(new Dimension(10, 10));
+        login.setVisible(true);
+        loading.setVisible(false);
         view_Image.setVisible(false);
-        home.setVisible(true);
+        home.setVisible(false);
         initEvent();
     }
     
     private void initEvent() {
+        PublicEvent.getInstance().addEventMain(new EventMain() {
+            @Override
+            public void showLoading(boolean show) {
+                loading.setVisible(show);
+            }
+
+            @Override
+            public void initChat() {
+                home.setVisible(true);
+            }
+        });
         PublicEvent.getInstance().addEventImageView(new EventImageView() {
             @Override
             public void viewImage(Icon image) {
-                System.out.println("Event running");
                 view_Image.viewImage(image);
             }
 
             @Override
             public void saveImage(Icon image) {
-                System.out.println("save image");
+                System.out.println("Save Image next update");
             }
+
         });
     }
 
@@ -70,8 +85,9 @@ public class Main extends javax.swing.JFrame {
         cmdClose = new javax.swing.JButton();
         body = new javax.swing.JLayeredPane();
         login = new com.raven.form.Login();
-        view_Image = new com.raven.form.View_Image();
+        loading = new com.raven.form.Loading();
         home = new com.raven.form.Home();
+        view_Image = new com.raven.form.View_Image();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -136,9 +152,10 @@ public class Main extends javax.swing.JFrame {
 
         body.setLayout(new java.awt.CardLayout());
         body.add(login, "card4");
+        body.add(loading, "card5");
+        body.add(home, "card2");
         body.setLayer(view_Image, javax.swing.JLayeredPane.POPUP_LAYER);
         body.add(view_Image, "card3");
-        body.add(home, "card2");
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);
@@ -147,7 +164,7 @@ public class Main extends javax.swing.JFrame {
             .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 1097, Short.MAX_VALUE)
+                .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 845, Short.MAX_VALUE)
                 .addContainerGap())
         );
         backgroundLayout.setVerticalGroup(
@@ -155,7 +172,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)
+                .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -232,8 +249,9 @@ public class Main extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        FlatArcIJTheme.setup();
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Main().setVisible(true);
             }
@@ -247,6 +265,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton cmdClose;
     private javax.swing.JButton cmdMinimize;
     private com.raven.form.Home home;
+    private com.raven.form.Loading loading;
     private com.raven.form.Login login;
     private javax.swing.JPanel title;
     private com.raven.form.View_Image view_Image;
