@@ -55,6 +55,7 @@ public class Main extends javax.swing.JFrame {
                 home.setVisible(true);
             }
         });
+        
         PublicEvent.getInstance().addEventImageView(new EventImageView() {
             @Override
             public void viewImage(Icon image) {

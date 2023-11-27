@@ -28,14 +28,14 @@ public class Login extends javax.swing.JPanel {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
+                        setVisible(false);
                         PublicEvent.getInstance().getEventMain().showLoading(true);
                         try {
-                            Thread.sleep(1000); //  for test
+                            Thread.sleep(3000); //  for test
                         } catch (InterruptedException e) {
                         }
                         PublicEvent.getInstance().getEventMain().showLoading(false);
                         PublicEvent.getInstance().getEventMain().initChat();
-                        setVisible(false);
                     }
                 }).start();
             }

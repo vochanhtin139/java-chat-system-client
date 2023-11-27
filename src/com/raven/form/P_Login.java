@@ -6,15 +6,8 @@ package com.raven.form;
 
 import com.raven.event.PublicEvent;
 
-/**
- *
- * @author ADMIN
- */
 public class P_Login extends javax.swing.JPanel {
 
-    /**
-     * Creates new form P_Login
-     */
     public P_Login() {
         initComponents();
     }
