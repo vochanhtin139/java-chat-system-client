@@ -27,7 +27,7 @@
                   <Component id="cmdRegister" alignment="1" max="32767" attributes="0"/>
                   <Component id="cmdLogin" alignment="1" max="32767" attributes="0"/>
                   <Component id="txtPass" alignment="1" max="32767" attributes="0"/>
-                  <Component id="jLabel3" alignment="1" pref="161" max="32767" attributes="0"/>
+                  <Component id="jLabel3" alignment="1" pref="179" max="32767" attributes="0"/>
                   <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
                   <Component id="txtUser" alignment="0" max="32767" attributes="0"/>
               </Group>
