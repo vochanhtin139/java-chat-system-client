@@ -14,14 +14,6 @@ public class Loading extends javax.swing.JComponent {
     public Loading() {
         initComponents();
     }
-
-    @Override
-    protected void paintComponent(Graphics grphcs) {
-        Graphics2D g2 = (Graphics2D) grphcs;
-        g2.setColor(new Color(255, 255, 255, 200));
-        g2.fillRect(0, 0, getWidth(), getHeight());
-        super.paintComponent(grphcs);
-    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -49,7 +41,13 @@ public class Loading extends javax.swing.JComponent {
         );
     }// </editor-fold>//GEN-END:initComponents
     
-    
+    @Override
+    protected void paintComponent(Graphics grphcs) {
+        Graphics2D g2 = (Graphics2D) grphcs;
+        g2.setColor(new Color(255, 255, 255, 200));
+        g2.fillRect(0, 0, getWidth(), getHeight());
+        super.paintComponent(grphcs);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;

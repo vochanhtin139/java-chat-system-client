@@ -36,6 +36,7 @@ public class Login extends javax.swing.JPanel {
                         }
                         PublicEvent.getInstance().getEventMain().showLoading(false);
                         PublicEvent.getInstance().getEventMain().initChat();
+                        setVisible(false);
                     }
                 }).start();
             }

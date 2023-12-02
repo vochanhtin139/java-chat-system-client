@@ -8,6 +8,7 @@ import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
 import com.raven.event.EventImageView;
 import com.raven.event.EventMain;
 import com.raven.event.PublicEvent;
+import com.raven.service.Service;
 import com.raven.swing.ComponentResizer;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -41,6 +42,7 @@ public class Main extends javax.swing.JFrame {
         view_Image.setVisible(false);
         home.setVisible(false);
         initEvent();
+        Service.getInstance().startServer();
     }
     
     private void initEvent() {
@@ -85,10 +87,10 @@ public class Main extends javax.swing.JFrame {
         cmdMinimize = new javax.swing.JButton();
         cmdClose = new javax.swing.JButton();
         body = new javax.swing.JLayeredPane();
-        login = new com.raven.form.Login();
         loading = new com.raven.form.Loading();
-        home = new com.raven.form.Home();
+        login = new com.raven.form.Login();
         view_Image = new com.raven.form.View_Image();
+        home = new com.raven.form.Home();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -152,11 +154,11 @@ public class Main extends javax.swing.JFrame {
         );
 
         body.setLayout(new java.awt.CardLayout());
-        body.add(login, "card4");
         body.add(loading, "card5");
-        body.add(home, "card2");
+        body.add(login, "card4");
         body.setLayer(view_Image, javax.swing.JLayeredPane.POPUP_LAYER);
         body.add(view_Image, "card3");
+        body.add(home, "card2");
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);
