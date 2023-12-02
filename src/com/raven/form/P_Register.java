@@ -5,6 +5,7 @@
 package com.raven.form;
 
 import com.raven.event.PublicEvent;
+import com.raven.model.Model_Register;
 
 /**
  *
@@ -99,7 +100,18 @@ public class P_Register extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRegisterActionPerformed
-        PublicEvent.getInstance().getEventLogin().register();
+        String userName = txtUser.getText().trim();
+        
+        // random password
+        String password = PasswordGenerator.generateRandomPassword(8);
+        System.out.println(password);
+        
+        if (userName.equals("")) {
+            txtUser.grabFocus();
+        } else {
+            Model_Register data = new Model_Register(userName, password);
+            PublicEvent.getInstance().getEventLogin().register(data);
+        }
     }//GEN-LAST:event_cmdRegisterActionPerformed
 
     private void cmdBackLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBackLoginActionPerformed

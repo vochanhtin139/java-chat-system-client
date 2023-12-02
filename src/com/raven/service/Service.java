@@ -9,6 +9,7 @@ import java.net.URISyntaxException;
  * @author quynhphan
  */
 public class Service {
+
     private static Service instance;
     private Socket client;
     private final int PORT_NUMBER = 9999;
@@ -32,6 +33,10 @@ public class Service {
         } catch (URISyntaxException e) {
             error(e);
         }
+    }
+    
+    public Socket getClient() {
+        return client;
     }
     
     private void error(Exception e) {

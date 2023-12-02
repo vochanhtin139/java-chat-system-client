@@ -1,10 +1,12 @@
 package com.raven.event;
 
+import com.raven.model.Model_Register;
+
 public interface EventLogin {
 
     public void login();
 
-    public void register();
+    public void register(Model_Register data);
 
     public void goRegister();
 
