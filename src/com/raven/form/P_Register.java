@@ -4,7 +4,9 @@
  */
 package com.raven.form;
 
+import com.raven.event.EventMessage;
 import com.raven.event.PublicEvent;
+import com.raven.model.Model_Message;
 import com.raven.model.Model_Register;
 import javax.swing.JOptionPane;
 //import javax.swing.JOptionPane;
@@ -108,15 +110,28 @@ public class P_Register extends javax.swing.JPanel {
             txtUser.grabFocus();
         } else if (!userName.contains("@")) {
             JOptionPane.showMessageDialog(null,"Please enter an email!");
-        } else {
+        } else {   
             // random password
             String password = PasswordGenerator.generateRandomPassword(8);
             System.out.println(password);
             
             Model_Register data = new Model_Register(userName, password);
-            EmailSender.sendEmail(userName, "Mật khẩu đăng nhập Hệ thống Chat", "Chào bạn,\n\nMật khẩu đăng nhập của bạn là: " + password + "\n\nPTQ");
-//            JOptionPane.showMessageDialog(null,"Register successfully!");
-            PublicEvent.getInstance().getEventLogin().register(data);
+            
+            PublicEvent.getInstance().getEventLogin().register(data, new EventMessage() {
+                @Override
+                public void callMessage(Model_Message message) {
+                    if (!message.isAction()) {
+                        JOptionPane.showMessageDialog(null,"This Email Has Already Been Registered");
+                    } else {                                            
+                        EmailSender.sendEmail(userName, "Mật khẩu đăng nhập Hệ thống Chat", "Chào bạn,\n\nMật khẩu đăng nhập của bạn là: " + password + "\n\nPTQ");
+                        
+                        JOptionPane.showMessageDialog(null,"Register successfully!");
+                        //PublicEvent.getInstance().getEventLogin().login();
+                            
+                    }
+                }
+            });
+            
         }
     }//GEN-LAST:event_cmdRegisterActionPerformed
 
