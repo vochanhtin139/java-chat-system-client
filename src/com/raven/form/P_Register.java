@@ -39,6 +39,9 @@ public class P_Register extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtPass = new javax.swing.JPasswordField();
+        txtRePass = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -64,10 +67,17 @@ public class P_Register extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("REGISTER");
 
-        jLabel2.setText("Your Email");
+        jLabel2.setText("User Name");
 
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 2, 9)); // NOI18N
-        jLabel3.setText("A random password will be sent to your email");
+        jLabel3.setText("Password");
+
+        jLabel4.setText("Confirm Password");
+
+        txtRePass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRePassActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -77,11 +87,14 @@ public class P_Register extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmdBackLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtRePass)
+                    .addComponent(txtPass)
+                    .addComponent(cmdBackLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
                     .addComponent(cmdRegister, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtUser))
+                    .addComponent(txtUser)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -90,30 +103,40 @@ public class P_Register extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtRePass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(cmdRegister)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmdBackLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRegisterActionPerformed
         String userName = txtUser.getText().trim();
+        String password = String.valueOf(txtPass.getPassword());
+        String confirmPassword = String.valueOf(txtRePass.getPassword());
         
         if (userName.equals("")) {
             txtUser.grabFocus();
-        } else if (!userName.contains("@")) {
-            JOptionPane.showMessageDialog(null,"Please enter an email!");
+        } else if (password.equals("")) {
+            txtPass.grabFocus();
+        } else if (!password.equals(confirmPassword)) {
+            JOptionPane.showMessageDialog(null,"Password not match");
         } else {   
             // random password
-            String password = PasswordGenerator.generateRandomPassword(8);
-            System.out.println(password);
+//            String password = PasswordGenerator.generateRandomPassword(8);
+//            System.out.println(password);
             
             Model_Register data = new Model_Register(userName, password);
             
@@ -121,11 +144,11 @@ public class P_Register extends javax.swing.JPanel {
                 @Override
                 public void callMessage(Model_Message message) {
                     if (!message.isAction()) {
-                        JOptionPane.showMessageDialog(null,"This Email Has Already Been Registered");
+                        JOptionPane.showMessageDialog(null,"Username Already Existed");
                     } else {                                            
-                        EmailSender.sendEmail(userName, "Mật khẩu đăng nhập Hệ thống Chat", "Chào bạn,\n\nMật khẩu đăng nhập của bạn là: " + password + "\n\nPTQ");
+//                        EmailSender.sendEmail(userName, "Mật khẩu đăng nhập Hệ thống Chat", "Chào bạn,\n\nMật khẩu đăng nhập của bạn là: " + password + "\n\nPTQ");
                         
-                        JOptionPane.showMessageDialog(null,"Register successfully!");
+                        JOptionPane.showMessageDialog(null,"Register Successfully!");
                         //PublicEvent.getInstance().getEventLogin().login();
                             
                     }
@@ -139,6 +162,10 @@ public class P_Register extends javax.swing.JPanel {
        PublicEvent.getInstance().getEventLogin().goLogin();
     }//GEN-LAST:event_cmdBackLoginActionPerformed
 
+    private void txtRePassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRePassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRePassActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cmdBackLogin;
@@ -146,6 +173,9 @@ public class P_Register extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPasswordField txtPass;
+    private javax.swing.JPasswordField txtRePass;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
