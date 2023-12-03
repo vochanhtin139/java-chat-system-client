@@ -6,6 +6,7 @@ package com.raven.form;
 
 import com.raven.event.PublicEvent;
 import com.raven.model.Model_Register;
+import javax.swing.JOptionPane;
 //import javax.swing.JOptionPane;
 
 /**
@@ -103,13 +104,15 @@ public class P_Register extends javax.swing.JPanel {
     private void cmdRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRegisterActionPerformed
         String userName = txtUser.getText().trim();
         
-        // random password
-        String password = PasswordGenerator.generateRandomPassword(8);
-        System.out.println(password);
-        
         if (userName.equals("")) {
             txtUser.grabFocus();
+        } else if (!userName.contains("@")) {
+            JOptionPane.showMessageDialog(null,"Please enter an email!");
         } else {
+            // random password
+            String password = PasswordGenerator.generateRandomPassword(8);
+            System.out.println(password);
+            
             Model_Register data = new Model_Register(userName, password);
             EmailSender.sendEmail(userName, "Mật khẩu đăng nhập Hệ thống Chat", "Chào bạn,\n\nMật khẩu đăng nhập của bạn là: " + password + "\n\nPTQ");
 //            JOptionPane.showMessageDialog(null,"Register successfully!");
