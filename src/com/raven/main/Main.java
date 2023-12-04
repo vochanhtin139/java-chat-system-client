@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.raven.main;
 
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
@@ -55,6 +52,7 @@ public class Main extends javax.swing.JFrame {
             @Override
             public void initChat() {
                 home.setVisible(true);
+                Service.getInstance().getClient().emit("list_user", Service.getInstance().getUser().getUserID());
             }
         });
         

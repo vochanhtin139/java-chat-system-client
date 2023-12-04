@@ -1,11 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package com.raven.form;
 
 import com.raven.component.item_People;
+import com.raven.event.EventMenuLeft;
+import com.raven.event.PublicEvent;
+import com.raven.model.Model_User_Account;
 import com.raven.swing.ScrollBar;
+import java.util.ArrayList;
+import java.util.List;
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -14,9 +16,8 @@ import net.miginfocom.swing.MigLayout;
  */
 public class Menu_Left extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Menu_Left
-     */
+    private List<Model_User_Account> userAccount;
+    
     public Menu_Left() {
         initComponents();
         init();
@@ -25,13 +26,23 @@ public class Menu_Left extends javax.swing.JPanel {
     private void init() {
         sp.setVerticalScrollBar(new ScrollBar());
         menuList.setLayout(new MigLayout("fillx", "0[]0", "0[]0"));
+        userAccount = new ArrayList<>();
+        PublicEvent.getInstance().addEventMenuLeft(new EventMenuLeft() {
+            @Override
+            public void newUser(List<Model_User_Account> users) {
+                for (Model_User_Account d : users) {
+                    userAccount.add(d);
+                    menuList.add(new item_People(d.getUserName()), "wrap");
+                }
+            }
+        });
         showMessage();
     }
     
     private void showMessage() {
         menuList.removeAll();
-        for (int i = 0; i < 5; i++) {
-            menuList.add(new item_People("People " + i), "wrap");
+        for (Model_User_Account d : userAccount) {
+            menuList.add(new item_People(d.getUserName()), "wrap");
         }
         refreshMenuList();
     }

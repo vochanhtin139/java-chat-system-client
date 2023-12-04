@@ -66,7 +66,16 @@ public class Model_User_Account {
         this.email = email;
     }
     
-    public Model_User_Account(int userID, String userName, String fullName, String address, String dob, String gender, String email) {
+    
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+    
+    public Model_User_Account(int userID, String userName, String fullName, String address, String dob, String gender, String email, boolean status) {
         this.userID = userID;
         this.userName = userName;
         this.fullName = fullName;
@@ -74,6 +83,7 @@ public class Model_User_Account {
         this.dob = dob;
         this.gender = gender;
         this.email = email;
+        this.status = status;
     }
     
     public Model_User_Account(Object json) {
@@ -86,6 +96,7 @@ public class Model_User_Account {
             dob = obj.getString("dob");
             gender = obj.getString("gender");
             email = obj.getString("email");
+            status = obj.getBoolean("status");
         } catch (JSONException e) {
             System.err.println(e);
         }
@@ -98,5 +109,5 @@ public class Model_User_Account {
     private String dob;
     private String gender;
     private String email;
-    
+    private boolean status;
 }
