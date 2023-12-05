@@ -4,6 +4,7 @@ package com.raven.form;
 import com.raven.event.EventLogin;
 import com.raven.event.EventMessage;
 import com.raven.event.PublicEvent;
+import com.raven.model.Model_Login;
 import com.raven.model.Model_Message;
 import com.raven.model.Model_Register;
 import com.raven.model.Model_User_Account;
@@ -27,19 +28,31 @@ public class Login extends javax.swing.JPanel {
     private void init() {
         PublicEvent.getInstance().addEventLogin(new EventLogin() {
             @Override
-            public void login() {
+            public void login(Model_Login data) {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        setVisible(false);
+                        System.out.println(data.toJSONObject());
                         PublicEvent.getInstance().getEventMain().showLoading(true);
-                        try {
-                            Thread.sleep(3000); //  for test
-                        } catch (InterruptedException e) {
-                        }
-                        PublicEvent.getInstance().getEventMain().showLoading(false);
-                        PublicEvent.getInstance().getEventMain().initChat();
-                        setVisible(false);
+                        Service.getInstance().getClient().emit("login", data.toJSONObject(), new Ack() {
+                            @Override
+                            public void call(Object... os) {
+                                if (os.length > 0) {
+                                    boolean action = (Boolean) os[0];
+                                    if (action) {
+                                        Service.getInstance().setUser(new Model_User_Account(os[1]));
+                                        PublicEvent.getInstance().getEventMain().showLoading(false);
+                                        PublicEvent.getInstance().getEventMain().initChat();
+                                        setVisible(false);
+                                    } else {
+                                        PublicEvent.getInstance().getEventMain().showLoading(false);
+                                    }
+                                }
+                                else {
+                                    PublicEvent.getInstance().getEventMain().showLoading(false);
+                                }
+                            }
+                        });
                     }
                 }).start();
             }

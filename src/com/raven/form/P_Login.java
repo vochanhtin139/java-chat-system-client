@@ -5,6 +5,7 @@
 package com.raven.form;
 
 import com.raven.event.PublicEvent;
+import com.raven.model.Model_Login;
 
 public class P_Login extends javax.swing.JPanel {
 
@@ -39,6 +40,12 @@ public class P_Login extends javax.swing.JPanel {
         jLabel2.setText("User Name");
 
         jLabel3.setText("Password");
+
+        txtUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserActionPerformed(evt);
+            }
+        });
 
         cmdLogin.setText("Login");
         cmdLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -101,13 +108,18 @@ public class P_Login extends javax.swing.JPanel {
         } catch (Exception e) {
             
         }
-        PublicEvent.getInstance().getEventLogin().login();
-        PublicEvent.getInstance().getEventMain().initChat();
+        PublicEvent.getInstance().getEventLogin().login(new Model_Login(txtUser.getText(), String.valueOf(txtPass.getPassword())));
+        System.out.println(txtUser.getText());
+//        PublicEvent.getInstance().getEventMain().initChat();
     }//GEN-LAST:event_cmdLoginActionPerformed
 
     private void cmdRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRegisterActionPerformed
         PublicEvent.getInstance().getEventLogin().goRegister();
     }//GEN-LAST:event_cmdRegisterActionPerformed
+
+    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
