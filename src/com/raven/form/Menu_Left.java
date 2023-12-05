@@ -33,6 +33,7 @@ public class Menu_Left extends javax.swing.JPanel {
                 for (Model_User_Account d : users) {
                     userAccount.add(d);
                     menuList.add(new item_People(d.getUserName()), "wrap");
+                    refreshMenuList();
                 }
             }
         });
