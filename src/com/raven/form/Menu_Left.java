@@ -6,6 +6,7 @@ import com.raven.event.EventMenuLeft;
 import com.raven.event.PublicEvent;
 import com.raven.model.Model_User_Account;
 import com.raven.swing.ScrollBar;
+import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 import net.miginfocom.swing.MigLayout;
@@ -16,13 +17,13 @@ import net.miginfocom.swing.MigLayout;
  */
 public class Menu_Left extends javax.swing.JPanel {
 
-    private List<Model_User_Account> userAccount;
-    
+     private List<Model_User_Account> userAccount;
+
     public Menu_Left() {
         initComponents();
         init();
     }
-    
+
     private void init() {
         sp.setVerticalScrollBar(new ScrollBar());
         menuList.setLayout(new MigLayout("fillx", "0[]0", "0[]0"));
@@ -32,42 +33,84 @@ public class Menu_Left extends javax.swing.JPanel {
             public void newUser(List<Model_User_Account> users) {
                 for (Model_User_Account d : users) {
                     userAccount.add(d);
-                    menuList.add(new item_People(d.getUserName()), "wrap");
+                    menuList.add(new item_People(d), "wrap");
                     refreshMenuList();
+                }
+            }
+
+            @Override
+            public void userConnect(int userID) {
+                for (Model_User_Account u : userAccount) {
+                    if (u.getUserID() == userID) {
+                        u.setStatus(true);
+                        break;
+                    }
+                }
+                if (menuMessage.isSelected()) {
+                    for (Component com : menuList.getComponents()) {
+                        item_People item = (item_People) com;
+                        if (item.getUser().getUserID() == userID) {
+                            item.updateStatus();
+                            break;
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void userDisconnect(int userID) {
+                for (Model_User_Account u : userAccount) {
+                    if (u.getUserID() == userID) {
+                        u.setStatus(false);
+                        break;
+                    }
+                }
+                if (menuMessage.isSelected()) {
+                    for (Component com : menuList.getComponents()) {
+                        item_People item = (item_People) com;
+                        if (item.getUser().getUserID() == userID) {
+                            item.updateStatus();
+                            break;
+                        }
+                    }
                 }
             }
         });
         showMessage();
     }
-    
+
     private void showMessage() {
+        //  test data
         menuList.removeAll();
         for (Model_User_Account d : userAccount) {
-            menuList.add(new item_People(d.getUserName()), "wrap");
+            menuList.add(new item_People(null), "wrap");
         }
         refreshMenuList();
     }
-    
+
     private void showGroup() {
+        //  test data
         menuList.removeAll();
         for (int i = 0; i < 5; i++) {
-            menuList.add(new item_People("Group " + i), "wrap");
+            menuList.add(new item_People(null), "wrap");
         }
         refreshMenuList();
     }
-    
+
     private void showBox() {
+        //  test data
         menuList.removeAll();
-        for (int i = 0; i < 20; i++) {
-            menuList.add(new item_People("Box " + i), "wrap");
+        for (int i = 0; i < 10; i++) {
+            menuList.add(new item_People(null), "wrap");
         }
         refreshMenuList();
     }
-    
+
     private void refreshMenuList() {
         menuList.repaint();
         menuList.revalidate();
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.

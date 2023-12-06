@@ -149,7 +149,7 @@ public class P_Register extends javax.swing.JPanel {
 //                        EmailSender.sendEmail(userName, "Mật khẩu đăng nhập Hệ thống Chat", "Chào bạn,\n\nMật khẩu đăng nhập của bạn là: " + password + "\n\nPTQ");
                         
                         JOptionPane.showMessageDialog(null,"Register Successfully!");
-                        PublicEvent.getInstance().getEventMain().initChat();
+                        //PublicEvent.getInstance().getEventMain().initChat();
                             
                     }
                 }
