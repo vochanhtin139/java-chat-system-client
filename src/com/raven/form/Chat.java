@@ -9,6 +9,7 @@ import com.raven.component.Chat_Bottom;
 import com.raven.component.Chat_Title;
 import com.raven.event.EventChat;
 import com.raven.event.PublicEvent;
+import com.raven.model.Model_User_Account;
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -17,28 +18,38 @@ import net.miginfocom.swing.MigLayout;
  */
 public class Chat extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Menu_Left
-     */
+    private Chat_Title chatTitle;
+    private Chat_Body chatBody;
+    private Chat_Bottom chatBottom;
+
     public Chat() {
         initComponents();
         init();
     }
-    
+
     private void init() {
         setLayout(new MigLayout("fillx", "0[fill]0", "0[]0[100%, bottom]0[shrink 0]0"));
-        Chat_Title chat_title = new Chat_Title();
-        Chat_Body chat_body = new Chat_Body();
-        Chat_Bottom chat_bottom = new Chat_Bottom();
+        chatTitle = new Chat_Title();
+        chatBody = new Chat_Body();
+        chatBottom = new Chat_Bottom();
         PublicEvent.getInstance().addEventChat(new EventChat() {
             @Override
             public void sendMessage(String text) {
-                chat_body.addItemRight(text);
+                chatBody.addItemRight(text);
             }
         });
-        add(chat_title, "wrap");
-        add(chat_body, "wrap");
-        add(chat_bottom, "h ::50%");
+        add(chatTitle, "wrap");
+        add(chatBody, "wrap");
+        add(chatBottom, "h ::50%");
+    }
+
+    public void setUser(Model_User_Account user) {
+        chatTitle.setUserName(user);
+        chatBottom.setUser(user);
+    }
+
+    public void updateUser(Model_User_Account user) {
+        chatTitle.updateUser(user);
     }
 
     /**

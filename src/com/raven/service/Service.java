@@ -39,6 +39,8 @@ public class Service {
                         Model_User_Account u = new Model_User_Account(o);
                         if (u.getUserID() != user.getUserID()) {
                             users.add(u);
+                            System.out.println("Username: " + u.getUserName());
+                            System.out.println("Active: "+ u.isStatus());
                         }
                     }
                     PublicEvent.getInstance().getEventMenuLeft().newUser(users);

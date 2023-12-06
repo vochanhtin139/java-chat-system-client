@@ -24,12 +24,15 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Component id="imageAvatar1" min="-2" pref="56" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lb" min="-2" pref="160" max="-2" attributes="0"/>
-                  <Component id="lbStatus" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lbStatus" max="32767" attributes="0"/>
+                      <EmptySpace min="107" pref="107" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -87,7 +90,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="7c" green="7c" red="7c" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="active"/>
+        <Property name="text" type="java.lang.String" value="New User"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb">

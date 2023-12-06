@@ -4,6 +4,7 @@
  */
 package com.raven.component;
 
+import com.raven.event.PublicEvent;
 import com.raven.model.Model_User_Account;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
@@ -18,7 +19,7 @@ public class item_People extends javax.swing.JPanel {
      public Model_User_Account getUser() {
         return user;
     }
-
+    private boolean mouseOver;
     private final Model_User_Account user;
 
     public item_People(Model_User_Account user) {
@@ -30,7 +31,6 @@ public class item_People extends javax.swing.JPanel {
     }
 
     public void updateStatus() {
-        System.out.println(user.isStatus());
         activeStatus.setActive(user.isStatus());
     }
 
@@ -39,11 +39,20 @@ public class item_People extends javax.swing.JPanel {
             @Override
             public void mouseEntered(MouseEvent me) {
                 setBackground(new Color(230, 230, 230));
+                mouseOver = true;
             }
 
             @Override
             public void mouseExited(MouseEvent me) {
                 setBackground(new Color(242, 242, 242));
+                mouseOver = false;
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent me) {
+                if (mouseOver) {
+                    PublicEvent.getInstance().getEventMain().selectUser(user);
+                }
             }
         });
     }
@@ -70,7 +79,7 @@ public class item_People extends javax.swing.JPanel {
 
         lbStatus.setFont(new java.awt.Font("sansserif", 2, 12)); // NOI18N
         lbStatus.setForeground(new java.awt.Color(124, 124, 124));
-        lbStatus.setText("active");
+        lbStatus.setText("New User");
 
         lb.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         lb.setText("Name");
@@ -85,8 +94,10 @@ public class item_People extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(107, 107, 107)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

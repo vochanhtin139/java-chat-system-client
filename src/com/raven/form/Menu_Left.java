@@ -17,7 +17,7 @@ import net.miginfocom.swing.MigLayout;
  */
 public class Menu_Left extends javax.swing.JPanel {
 
-     private List<Model_User_Account> userAccount;
+    private List<Model_User_Account> userAccount;
 
     public Menu_Left() {
         initComponents();
@@ -43,6 +43,7 @@ public class Menu_Left extends javax.swing.JPanel {
                 for (Model_User_Account u : userAccount) {
                     if (u.getUserID() == userID) {
                         u.setStatus(true);
+                        PublicEvent.getInstance().getEventMain().updateUser(u);
                         break;
                     }
                 }
@@ -62,6 +63,7 @@ public class Menu_Left extends javax.swing.JPanel {
                 for (Model_User_Account u : userAccount) {
                     if (u.getUserID() == userID) {
                         u.setStatus(false);
+                        PublicEvent.getInstance().getEventMain().updateUser(u);
                         break;
                     }
                 }

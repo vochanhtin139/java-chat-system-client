@@ -4,6 +4,7 @@
  */
 package com.raven.component;
 
+import com.raven.model.Model_User_Account;
 import java.awt.Color;
 
 /**
@@ -12,27 +13,46 @@ import java.awt.Color;
  */
 public class Chat_Title extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Chat_Title
-     */
+    public Model_User_Account getUser() {
+        return user;
+    }
+
+    private Model_User_Account user;
+
     public Chat_Title() {
         initComponents();
     }
-    
-    public void setUsername(String username) {
-        lbName.setText(username);
+
+    public void setUserName(Model_User_Account user) {
+        this.user = user;
+        lbName.setText(user.getUserName());
+        if (user.isStatus()) {
+            statusActive();
+        } else {
+            setStatusText("Offline");
+        }
     }
-    
-    public void statusActive() {
+
+    public void updateUser(Model_User_Account user) {
+        if (this.user == user) {
+            lbName.setText(user.getUserName());
+            if (user.isStatus()) {
+                statusActive();
+            } else {
+                setStatusText("Offline");
+            }
+        }
+    }
+
+    private void statusActive() {
         lbStatus.setText("Active now");
         lbStatus.setForeground(new java.awt.Color(40, 147, 59));
     }
-    
-    public void setStatusText(String text) {
+
+    private void setStatusText(String text) {
         lbStatus.setText(text);
         lbStatus.setForeground(new Color(160, 160, 160));
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

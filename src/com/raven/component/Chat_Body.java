@@ -27,31 +27,6 @@ public class Chat_Body extends javax.swing.JPanel {
     public Chat_Body() {
         initComponents();
         init();
-        addDate("18/11/2023");
-        addItemRight("Lorem Ipsum");
-        addItemLeft("hellofsfsdfsdofsffsfsdfsd", "Chanh Tin");
-        addItemRight("hellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsd");
-        addItemLeft("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", "Chanh Tin");
-        addDate("19/11/2023");
-        String img[]={"LGP%V2-;_4ISt4IVRk?H~p%2Rk9Z","LPS$lkay?dofjrfQbIfQ%hj[ITay"};
-        addItemLeft("hello", "Chanh Tin",img);
-        addItemRight("hellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsd");
-        addItemRight("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
-        addItemLeft("hellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsd", "Chanh Tin");
-        addItemRight("hellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsd");
-        addItemRight("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",new ImageIcon(getClass().getResource("/com/raven/icon/rainbow.jpeg")));
-        addDate("yesterday");
-        addItemLeft("hellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsd", "Chanh Tin",new ImageIcon(getClass().getResource("/com/raven/icon/rainbow.jpeg")));
-        addItemRight("hellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsd", new ImageIcon(getClass().getResource("/com/raven/icon/rainbow.jpeg")));
-        addItemRight("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
-        addItemLeft("hellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsd", "Chanh Tin", new ImageIcon(getClass().getResource("/com/raven/icon/profile.png")));
-        addDate("today");
-        addItemRight("ABCsdfgsdfgsdfgsSDFS");
-        addItemLeft("", "daniel", new ImageIcon(getClass().getResource("/com/raven/icon/rainbow.jpeg")), new ImageIcon(getClass().getResource("/com/raven/icon/rainbow.jpeg")));
-        addItemFile("this is my file", "Chanh Tin", "my-file.pdf", "4 MB");
-        addItemFileRight("file", "123pfls.txt", "100 KB");
-        addItemRight("hellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsdhellofsfsdfsd", new ImageIcon(getClass().getResource("/com/raven/icon/rainbow.jpeg")));
-        addItemLeft("hellofsfsdfsdofsffsfsdfsd", "Chanh Tin");
         addItemLeft("hellofsfsdfsdofsffsfsdfsd", "Chanh Tin");
     }
     
