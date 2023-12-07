@@ -4,6 +4,8 @@
  */
 package com.raven.component;
 
+import com.raven.model.Model_Receive_Message;
+import com.raven.model.Model_Send_Message;
 import com.raven.swing.ScrollBar;
 import java.awt.Adjustable;
 import java.awt.Color;
@@ -27,7 +29,6 @@ public class Chat_Body extends javax.swing.JPanel {
     public Chat_Body() {
         initComponents();
         init();
-        addItemLeft("hellofsfsdfsdofsffsfsdfsd", "Chanh Tin");
     }
     
     private void init() {
@@ -36,15 +37,13 @@ public class Chat_Body extends javax.swing.JPanel {
         sp.getVerticalScrollBar().setBackground(Color.WHITE);
     }
     
-    public void addItemLeft(String text, String user, Icon... image) {
-        Chat_Left_With_Profile item = new Chat_Left_With_Profile();
-        item.setUserProfile(user);
-        item.setText(text);
-        item.setImage(image);
+     public void addItemLeft(Model_Receive_Message data) {
+        Chat_Left item = new Chat_Left();
+        item.setText(data.getText());
         item.setTime();
         body.add(item, "wrap, w 100::80%");
-        body.repaint();
-        body.revalidate();
+        repaint();
+        revalidate();
     }
     
     public void addItemLeft(String text, String user, String[] image) {
@@ -70,13 +69,12 @@ public class Chat_Body extends javax.swing.JPanel {
         body.revalidate();
     }
     
-    public void addItemRight(String text, Icon... image) {
+    public void addItemRight(Model_Send_Message data) {
         Chat_Right item = new Chat_Right();
-        item.setText(text);
-        item.setImage(image);
+        item.setText(data.getText());
         body.add(item, "wrap, al right, w 100::80%");
-        body.repaint();
-        body.revalidate();
+        repaint();
+        revalidate();
         item.setTime();
         scrollToBottom();
     }
@@ -111,6 +109,11 @@ public class Chat_Body extends javax.swing.JPanel {
         verticalBar.addAdjustmentListener(downScroller);
     }
 
+    public void clearChat() {
+        body.removeAll();
+        repaint();
+        revalidate();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

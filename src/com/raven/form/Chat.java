@@ -9,6 +9,8 @@ import com.raven.component.Chat_Bottom;
 import com.raven.component.Chat_Title;
 import com.raven.event.EventChat;
 import com.raven.event.PublicEvent;
+import com.raven.model.Model_Receive_Message;
+import com.raven.model.Model_Send_Message;
 import com.raven.model.Model_User_Account;
 import net.miginfocom.swing.MigLayout;
 
@@ -34,8 +36,15 @@ public class Chat extends javax.swing.JPanel {
         chatBottom = new Chat_Bottom();
         PublicEvent.getInstance().addEventChat(new EventChat() {
             @Override
-            public void sendMessage(String text) {
-                chatBody.addItemRight(text);
+            public void sendMessage(Model_Send_Message data) {
+                chatBody.addItemRight(data);
+            }
+
+            @Override
+            public void receiveMessage(Model_Receive_Message data) {
+                if (chatTitle.getUser().getUserID() == data.getFromUserID()) {
+                    chatBody.addItemLeft(data);
+                }
             }
         });
         add(chatTitle, "wrap");
@@ -46,6 +55,7 @@ public class Chat extends javax.swing.JPanel {
     public void setUser(Model_User_Account user) {
         chatTitle.setUserName(user);
         chatBottom.setUser(user);
+        chatBody.clearChat();
     }
 
     public void updateUser(Model_User_Account user) {
