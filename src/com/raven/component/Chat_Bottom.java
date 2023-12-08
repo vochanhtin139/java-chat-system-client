@@ -1,5 +1,6 @@
 package com.raven.component;
 
+import com.raven.app.MessageType;
 import com.raven.event.PublicEvent;
 import com.raven.model.Model_Send_Message;
 import com.raven.model.Model_User_Account;
@@ -28,6 +29,7 @@ public class Chat_Bottom extends javax.swing.JPanel {
 
     public void setUser(Model_User_Account user) {
         this.user = user;
+        panelMore.setUser(user);
     }
 
     private Model_User_Account user;
@@ -109,7 +111,7 @@ public class Chat_Bottom extends javax.swing.JPanel {
     private void eventSend(JIMSendTextPane txt) {
         String text = txt.getText().trim();
         if (!text.equals("")) {
-            Model_Send_Message message = new Model_Send_Message(Service.getInstance().getUser().getUserID(), user.getUserID(), text);
+            Model_Send_Message message = new Model_Send_Message(MessageType.TEXT, Service.getInstance().getUser().getUserID(), user.getUserID(), text);
             send(message);
             PublicEvent.getInstance().getEventChat().sendMessage(message);
             txt.setText("");

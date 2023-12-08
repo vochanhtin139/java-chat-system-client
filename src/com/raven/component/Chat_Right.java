@@ -40,6 +40,11 @@ public class Chat_Right extends javax.swing.JLayeredPane {
         txt.setImage(false, image);
     }
     
+     public void setEmoji(Icon icon) {
+        txt.hideText();
+        txt.setEmoji(true, icon);
+    }
+     
     public void setFile(String fileName, String fileSize) {
         txt.setFile(fileName, fileSize);
     }

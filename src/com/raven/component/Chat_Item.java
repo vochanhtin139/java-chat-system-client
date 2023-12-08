@@ -75,6 +75,15 @@ public class Chat_Item extends javax.swing.JLayeredPane {
         add(layer);
     }
     
+    public void setEmoji(boolean right, Icon icon) {
+        JLayeredPane layer = new JLayeredPane();
+        layer.setLayout(new FlowLayout(right ? FlowLayout.RIGHT : FlowLayout.LEFT));
+        layer.setBorder(new EmptyBorder(0, 5, 0, 5));
+        layer.add(new JLabel(icon));
+        add(layer);
+        setBackground(null);
+    }
+    
     public void setFile(String fileName, String fileSize) {
         JLayeredPane layer = new JLayeredPane();
         layer.setLayout(new FlowLayout(FlowLayout.LEFT));
