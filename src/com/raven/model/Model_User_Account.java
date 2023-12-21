@@ -9,6 +9,14 @@ import org.json.JSONObject;
  * @author quynhphan
  */
 public class Model_User_Account {
+    
+    public int getConversationID() {
+        return conversationID;
+    }
+
+    public void setConversationID(int conversationID) {
+        this.conversationID = conversationID;
+    }
 
     public int getUserID() {
         return userID;
@@ -75,7 +83,7 @@ public class Model_User_Account {
         this.status = status;
     }
     
-    public Model_User_Account(int userID, String userName, String fullName, String address, String dob, String gender, String email, boolean status) {
+    public Model_User_Account(int userID, String userName, String fullName, String address, String dob, String gender, String email, boolean status, int id) {
         this.userID = userID;
         this.userName = userName;
         this.fullName = fullName;
@@ -84,6 +92,7 @@ public class Model_User_Account {
         this.gender = gender;
         this.email = email;
         this.status = status;
+        this.conversationID = id;
     }
     
     public Model_User_Account(Object json) {
@@ -97,6 +106,8 @@ public class Model_User_Account {
             gender = obj.getString("gender");
             email = obj.getString("email");
             status = obj.getBoolean("status");
+            conversationID = obj.getInt("conversationID");
+            
         } catch (JSONException e) {
             System.err.println(e);
         }
@@ -110,4 +121,5 @@ public class Model_User_Account {
     private String gender;
     private String email;
     private boolean status;
+    private int conversationID;
 }

@@ -123,6 +123,7 @@ public class Chat_Bottom extends javax.swing.JPanel {
     }
 
     private void send(Model_Send_Message data) {
+        System.out.println(data.toJsonObject());
         Service.getInstance().getClient().emit("send_to_user", data.toJsonObject());
     }
 

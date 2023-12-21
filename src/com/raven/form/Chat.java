@@ -56,6 +56,7 @@ public class Chat extends javax.swing.JPanel {
         chatTitle.setUserName(user);
         chatBottom.setUser(user);
         chatBody.clearChat();
+        System.out.println(user.getConversationID());
     }
 
     public void updateUser(Model_User_Account user) {
