@@ -6,18 +6,25 @@ package com.raven.component;
 
 import com.raven.app.MessageType;
 import com.raven.emoji.Emoji;
+import com.raven.form.Chat;
 import com.raven.model.Model_Receive_Message;
 import com.raven.model.Model_Send_Message;
+import com.raven.model.Model_conversation;
+import com.raven.service.Service;
 import com.raven.swing.ScrollBar;
 import java.awt.Adjustable;
 import java.awt.Color;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import net.miginfocom.swing.MigLayout;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *

@@ -3,6 +3,7 @@ package com.raven.service;
 import com.raven.event.PublicEvent;
 import com.raven.model.Model_Receive_Message;
 import com.raven.model.Model_User_Account;
+import com.raven.model.Model_conversation;
 import io.socket.client.IO;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
@@ -66,6 +67,18 @@ public class Service {
                 public void call(Object... os) {
                     Model_Receive_Message message = new Model_Receive_Message(os[0]);
                     PublicEvent.getInstance().getEventChat().receiveMessage(message);
+                }
+            });
+            
+            client.on("receive_conversation_message", new Emitter.Listener() {
+                @Override
+                public void call(Object... os) {
+                    List<Model_conversation> msg = new ArrayList<>();
+                    for (Object o : os) {
+                        Model_conversation u = new Model_conversation(o);
+                        msg.add(u);
+                    }
+                    PublicEvent.getInstance().getEventChat().getConversationMessage(msg);
                 }
             });
             client.open();

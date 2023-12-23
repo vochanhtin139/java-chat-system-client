@@ -4,6 +4,7 @@
  */
 package com.raven.form;
 
+import com.raven.app.MessageType;
 import com.raven.component.Chat_Body;
 import com.raven.component.Chat_Bottom;
 import com.raven.component.Chat_Title;
@@ -12,7 +13,15 @@ import com.raven.event.PublicEvent;
 import com.raven.model.Model_Receive_Message;
 import com.raven.model.Model_Send_Message;
 import com.raven.model.Model_User_Account;
+import com.raven.model.Model_conversation;
+import com.raven.service.Service;
+import io.socket.client.Ack;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import net.miginfocom.swing.MigLayout;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -46,6 +55,20 @@ public class Chat extends javax.swing.JPanel {
                     chatBody.addItemLeft(data);
                 }
             }
+
+            @Override
+            public void getConversationMessage(List<Model_conversation> msg) {
+                for (Model_conversation mc: msg) {
+                    if (mc.getSenderID() == 1) {
+                        Model_Send_Message msm = new Model_Send_Message(MessageType.TEXT, 1, 2, mc.getContent());
+                        chatBody.addItemRight(msm);
+                    }
+                    else {
+                        Model_Receive_Message mrm = new Model_Receive_Message(MessageType.TEXT, 2, mc.getContent());
+                        chatBody.addItemLeft(mrm);
+                    }
+                }
+            }
         });
         add(chatTitle, "wrap");
         add(chatBody, "wrap");
@@ -56,6 +79,8 @@ public class Chat extends javax.swing.JPanel {
         chatTitle.setUserName(user);
         chatBottom.setUser(user);
         chatBody.clearChat();
+        
+        Service.getInstance().getClient().emit("get_conversation_messages", user.getConversationID());
         System.out.println(user.getConversationID());
     }
 
