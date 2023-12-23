@@ -55,6 +55,7 @@ public class Main extends javax.swing.JFrame {
                 home.setVisible(true);
                 login.setVisible(false);
                 Service.getInstance().getClient().emit("list_user", Service.getInstance().getUser().getUserID());
+                Service.getInstance().getClient().emit("list_friend", Service.getInstance().getUser().getUserID());
             }
             
             @Override

@@ -4,17 +4,49 @@
  */
 package com.raven.form;
 
+import com.raven.component.item_People;
+import com.raven.event.EventMenuRight;
+import com.raven.event.PublicEvent;
+import com.raven.model.Model_User_Account;
+import com.raven.swing.ScrollBar;
+import java.util.ArrayList;
+import java.util.List;
+import net.miginfocom.swing.MigLayout;
+
 /**
  *
  * @author vochanhtin139
  */
 public class Menu_Right extends javax.swing.JPanel {
+    
+    private List<Model_User_Account> userAccount;
 
     /**
      * Creates new form Menu_Left
      */
     public Menu_Right() {
         initComponents();
+        sp.setVerticalScrollBar(new ScrollBar());
+        menuList.setLayout(new MigLayout("fillx", "0[]0", "0[]0"));
+        userAccount = new ArrayList<>();
+        
+        PublicEvent.getInstance().addEventMenuRight(new EventMenuRight() {
+            @Override
+            public void getListFriend(List<Model_User_Account> users) {
+                for (Model_User_Account d : users) {
+                    System.out.println("ADDED!!!");
+                    userAccount.add(d);
+                    menuList.add(new item_People(d), "wrap");
+                    refreshMenuList();
+                }
+            }
+        
+        });
+    }
+    
+    private void refreshMenuList() {
+        menuList.repaint();
+        menuList.revalidate();
     }
 
     /**
@@ -27,10 +59,25 @@ public class Menu_Right extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        sp = new javax.swing.JScrollPane();
+        menuList = new javax.swing.JLayeredPane();
 
         setBackground(new java.awt.Color(249, 249, 249));
 
         jLabel1.setText("Menu Right note");
+
+        javax.swing.GroupLayout menuListLayout = new javax.swing.GroupLayout(menuList);
+        menuList.setLayout(menuListLayout);
+        menuListLayout.setHorizontalGroup(
+            menuListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 258, Short.MAX_VALUE)
+        );
+        menuListLayout.setVerticalGroup(
+            menuListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 738, Short.MAX_VALUE)
+        );
+
+        sp.setViewportView(menuList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -42,6 +89,8 @@ public class Menu_Right extends javax.swing.JPanel {
                     .addGap(0, 82, Short.MAX_VALUE)
                     .addComponent(jLabel1)
                     .addGap(0, 83, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(sp, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -51,11 +100,15 @@ public class Menu_Right extends javax.swing.JPanel {
                     .addGap(0, 361, Short.MAX_VALUE)
                     .addComponent(jLabel1)
                     .addGap(0, 362, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(sp, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLayeredPane menuList;
+    private javax.swing.JScrollPane sp;
     // End of variables declaration//GEN-END:variables
 }

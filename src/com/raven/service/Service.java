@@ -48,6 +48,24 @@ public class Service {
                     PublicEvent.getInstance().getEventMenuLeft().newUser(users);
                 }
             });
+            
+            client.on("list_friend", new Emitter.Listener() {
+                @Override
+                public void call(Object... os) {
+                    //  list user
+                    List<Model_User_Account> users = new ArrayList<>();
+                    for (Object o : os) {
+                        Model_User_Account u = new Model_User_Account(o);
+                        if (u.getUserID() != user.getUserID()) {
+                            users.add(u);
+                            System.out.println("Username: " + u.getUserName());
+                            System.out.println("Active: "+ u.isStatus());
+                        }
+                    }
+                    PublicEvent.getInstance().getEventMenuRight().getListFriend(users);
+                }
+            });
+            
             client.on("user_status", new Emitter.Listener() {
                 @Override
                 public void call(Object... os) {
