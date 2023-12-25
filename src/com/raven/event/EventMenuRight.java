@@ -5,6 +5,7 @@
 package com.raven.event;
 
 import com.raven.model.Model_User_Account;
+import com.raven.model.Model_friendship_status;
 import java.util.List;
 
 /**
@@ -14,4 +15,6 @@ import java.util.List;
 public interface EventMenuRight {
 
     public void getListFriend(List<Model_User_Account> users);
+    
+    public void getFriendshipStatus(List<Model_friendship_status> relationships);
 }

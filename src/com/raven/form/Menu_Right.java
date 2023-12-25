@@ -2,10 +2,13 @@
 package com.raven.form;
 
 import com.raven.component.item_People;
+import com.raven.component.item_People1;
 import com.raven.event.EventMenuLeft;
 import com.raven.event.EventMenuRight;
 import com.raven.event.PublicEvent;
 import com.raven.model.Model_User_Account;
+import com.raven.model.Model_friendship_status;
+import com.raven.service.Service;
 import com.raven.swing.ScrollBar;
 import java.awt.Component;
 import java.util.ArrayList;
@@ -20,6 +23,7 @@ public class Menu_Right extends javax.swing.JPanel {
 
     
     private List<Model_User_Account> userAccount;
+    private List<Model_User_Account> accounts;
 
     /**
      * Creates new form Menu_Left
@@ -34,10 +38,29 @@ public class Menu_Right extends javax.swing.JPanel {
         PublicEvent.getInstance().addEventMenuRight(new EventMenuRight() {
             @Override
             public void getListFriend(List<Model_User_Account> users) {
-                for (Model_User_Account d : users) {
-                    System.out.println("ADDED!!!");
+                accounts = users;
+//                    System.out.println("ADDED!!!");
+//                    userAccount.add(d);
+//                    menuList.add(new item_People1(d), "wrap");
+//                    refreshMenuList();
+            }
+
+            @Override
+            public void getFriendshipStatus(List<Model_friendship_status> relationships) {
+                for (Model_User_Account d : accounts) {
+                    String tmp = "Add friend";
+                  
                     userAccount.add(d);
-                    menuList.add(new item_People(d), "wrap");
+                    
+                    
+                    for (Model_friendship_status status : relationships) {
+                        if (status.getUserID1() == Service.getInstance().getUser().getUserID() && status.getUserID2() == d.getUserID() && status.getStatus().equals("Pending")) {
+                            tmp = "Cancel request";
+                            break;
+                        }
+                    }
+                    
+                    menuList.add(new item_People1(d, tmp), "wrap");
                     refreshMenuList();
                 }
             }
@@ -106,7 +129,6 @@ public class Menu_Right extends javax.swing.JPanel {
         menu.add(menuBox);
 
         sp.setBorder(null);
-        sp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         menuList.setBackground(new java.awt.Color(230, 230, 230));
         menuList.setOpaque(true);

@@ -4,6 +4,7 @@ import com.raven.event.PublicEvent;
 import com.raven.model.Model_Receive_Message;
 import com.raven.model.Model_User_Account;
 import com.raven.model.Model_conversation;
+import com.raven.model.Model_friendship_status;
 import io.socket.client.IO;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
@@ -99,6 +100,24 @@ public class Service {
                     PublicEvent.getInstance().getEventChat().getConversationMessage(msg);
                 }
             });
+            
+            client.on("receive_list_friend_status", new Emitter.Listener() {
+                @Override
+                public void call(Object... os) {
+                    List<Model_friendship_status> msg = new ArrayList<>();
+                    for (Object o : os) {
+                        Model_friendship_status u = new Model_friendship_status(o);
+                        System.out.println(u.getFriendshipID());
+                        System.out.println(u.getUserID1());
+                        System.out.println(u.getUserID2());
+                        System.out.println(u.getStatus());
+                        System.out.println(u.getTime());
+                        msg.add(u);
+                    }
+                    PublicEvent.getInstance().getEventMenuRight().getFriendshipStatus(msg);
+                }
+            });
+            
             client.open();
         } catch (URISyntaxException e) {
             error(e);
