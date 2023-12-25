@@ -24,6 +24,8 @@ public class Menu_Right extends javax.swing.JPanel {
     
     private List<Model_User_Account> userAccount;
     private List<Model_User_Account> accounts;
+    private List<Model_User_Account> myFriendList;
+    List<Model_friendship_status> relationshipStatus;
 
     /**
      * Creates new form Menu_Left
@@ -39,14 +41,12 @@ public class Menu_Right extends javax.swing.JPanel {
             @Override
             public void getListFriend(List<Model_User_Account> users) {
                 accounts = users;
-//                    System.out.println("ADDED!!!");
-//                    userAccount.add(d);
-//                    menuList.add(new item_People1(d), "wrap");
-//                    refreshMenuList();
             }
 
             @Override
             public void getFriendshipStatus(List<Model_friendship_status> relationships) {
+                relationshipStatus = relationships;
+                
                 for (Model_User_Account d : accounts) {
                     String tmp = "Add friend";
                   
@@ -58,11 +58,21 @@ public class Menu_Right extends javax.swing.JPanel {
                             tmp = "Cancel request";
                             break;
                         }
+                        
+                        if (status.getUserID1() == d.getUserID() && status.getUserID2() == Service.getInstance().getUser().getUserID() && status.getStatus().equals("Pending")) {
+                            tmp = "Accept friend";
+                            break;
+                        }
                     }
                     
                     menuList.add(new item_People1(d, tmp), "wrap");
                     refreshMenuList();
                 }
+            }
+
+            @Override
+            public void getYourFriendList(List<Model_User_Account> users) {
+                myFriendList = users;
             }
         
         });
@@ -71,6 +81,65 @@ public class Menu_Right extends javax.swing.JPanel {
     private void refreshMenuList() {
         menuList.repaint();
         menuList.revalidate();
+    }
+    
+    private void showMessage() {
+        //  test data
+//        menuList.removeAll();
+//        for (Model_User_Account d : userAccount) {
+//            menuList.add(new item_People(null), "wrap");
+//        }
+//        refreshMenuList();
+
+        menuList.removeAll();
+        
+        for (Model_User_Account d : accounts) {
+            String tmp = "Add friend";
+
+            userAccount.add(d);
+
+
+            for (Model_friendship_status status : relationshipStatus) {
+                if (status.getUserID1() == Service.getInstance().getUser().getUserID() && status.getUserID2() == d.getUserID() && status.getStatus().equals("Pending")) {
+                    tmp = "Cancel request";
+                    break;
+                }
+
+                if (status.getUserID1() == d.getUserID() && status.getUserID2() == Service.getInstance().getUser().getUserID() && status.getStatus().equals("Pending")) {
+                    tmp = "Accept friend";
+                    break;
+                }
+            }
+
+            menuList.add(new item_People1(d, tmp), "wrap");
+
+        }
+        
+        refreshMenuList();
+    }
+
+    private void showGroup() {
+        //  test data
+//        menuList.removeAll();
+//        for (int i = 0; i < 5; i++) {
+//            menuList.add(new item_People(null), "wrap");
+//        }
+//        refreshMenuList();
+
+        menuList.removeAll();
+        for (Model_User_Account d : myFriendList) {
+            menuList.add(new item_People(d), "wrap");
+        }
+        refreshMenuList();
+    }
+
+    private void showBox() {
+        //  test data
+        menuList.removeAll();
+        for (int i = 0; i < 10; i++) {
+            menuList.add(new item_People(null), "wrap");
+        }
+        refreshMenuList();
     }
 
 
@@ -181,7 +250,7 @@ public class Menu_Right extends javax.swing.JPanel {
             menuMessage.setSelected(true);
             menuGroup.setSelected(false);
             menuBox.setSelected(false);
-//            showMessage();
+            showMessage();
         }
     }//GEN-LAST:event_menuMessageActionPerformed
 
@@ -190,7 +259,7 @@ public class Menu_Right extends javax.swing.JPanel {
             menuMessage.setSelected(false);
             menuGroup.setSelected(true);
             menuBox.setSelected(false);
-//            showGroup();
+            showGroup();
         }
     }//GEN-LAST:event_menuGroupActionPerformed
 
@@ -199,7 +268,7 @@ public class Menu_Right extends javax.swing.JPanel {
             menuMessage.setSelected(false);
             menuGroup.setSelected(false);
             menuBox.setSelected(true);
-//            showBox();
+            showBox();
         }
     }//GEN-LAST:event_menuBoxActionPerformed
 

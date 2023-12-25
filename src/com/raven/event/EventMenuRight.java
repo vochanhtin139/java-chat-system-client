@@ -17,4 +17,6 @@ public interface EventMenuRight {
     public void getListFriend(List<Model_User_Account> users);
     
     public void getFriendshipStatus(List<Model_friendship_status> relationships);
+    
+    public void getYourFriendList(List<Model_User_Account> users);
 }
