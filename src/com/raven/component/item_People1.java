@@ -135,6 +135,12 @@ public class item_People1 extends javax.swing.JPanel {
             Model_friendship friendship = new Model_friendship(this.user.getUserID(), Service.getInstance().getUser().getUserID());
             Service.getInstance().getClient().emit("accept_friend", friendship.toJSONObject());
         }
+        else if (btnAddFriend.getText().equals("Block")) {
+            btnAddFriend.setText("BLOCKED");
+            btnAddFriend.setEnabled(false);
+            Model_friendship friendship = new Model_friendship(this.user.getUserID(), Service.getInstance().getUser().getUserID());
+            Service.getInstance().getClient().emit("block_user", friendship.toJSONObject());
+        }
     }//GEN-LAST:event_btnAddFriendActionPerformed
 
 

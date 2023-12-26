@@ -134,6 +134,23 @@ public class Service {
                     PublicEvent.getInstance().getEventMenuRight().getYourFriendList(users);
                 }
             });
+           
+            client.on("received_your_blocked_list", new Emitter.Listener() {
+                @Override
+                public void call(Object... os) {
+                    //  list user
+                    List<Model_User_Account> users = new ArrayList<>();
+                    for (Object o : os) {
+                        Model_User_Account u = new Model_User_Account(o);
+                        if (u.getUserID() != user.getUserID()) {
+                            users.add(u);
+                            System.out.println("Username: " + u.getUserName());
+                            System.out.println("Active: "+ u.isStatus());
+                        }
+                    }
+                    PublicEvent.getInstance().getEventMenuRight().getYourBlockedList(users);
+                }
+            });
             
             client.open();
         } catch (URISyntaxException e) {

@@ -58,6 +58,7 @@ public class Main extends javax.swing.JFrame {
                 Service.getInstance().getClient().emit("list_friend", Service.getInstance().getUser().getUserID());
                 Service.getInstance().getClient().emit("list_friend_status", Service.getInstance().getUser().getUserID());
                 Service.getInstance().getClient().emit("get_your_friend_list", Service.getInstance().getUser().getUserID());
+                Service.getInstance().getClient().emit("get_blocked_list", Service.getInstance().getUser().getUserID());
             }
             
             @Override

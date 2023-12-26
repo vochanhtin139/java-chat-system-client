@@ -25,6 +25,7 @@ public class Menu_Right extends javax.swing.JPanel {
     private List<Model_User_Account> userAccount;
     private List<Model_User_Account> accounts;
     private List<Model_User_Account> myFriendList;
+    private List<Model_User_Account> myBlockedList;
     List<Model_friendship_status> relationshipStatus;
 
     /**
@@ -73,6 +74,11 @@ public class Menu_Right extends javax.swing.JPanel {
             @Override
             public void getYourFriendList(List<Model_User_Account> users) {
                 myFriendList = users;
+            }
+
+            @Override
+            public void getYourBlockedList(List<Model_User_Account> users) {
+                myBlockedList = users;
             }
         
         });
@@ -128,7 +134,7 @@ public class Menu_Right extends javax.swing.JPanel {
 
         menuList.removeAll();
         for (Model_User_Account d : myFriendList) {
-            menuList.add(new item_People(d), "wrap");
+            menuList.add(new item_People1(d, "Block"), "wrap");
         }
         refreshMenuList();
     }
@@ -136,8 +142,8 @@ public class Menu_Right extends javax.swing.JPanel {
     private void showBox() {
         //  test data
         menuList.removeAll();
-        for (int i = 0; i < 10; i++) {
-            menuList.add(new item_People(null), "wrap");
+        for (Model_User_Account d : myBlockedList) {
+            menuList.add(new item_People(d), "wrap");
         }
         refreshMenuList();
     }

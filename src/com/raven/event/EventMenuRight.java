@@ -19,4 +19,6 @@ public interface EventMenuRight {
     public void getFriendshipStatus(List<Model_friendship_status> relationships);
     
     public void getYourFriendList(List<Model_User_Account> users);
+    
+    public void getYourBlockedList(List<Model_User_Account> users);
 }
