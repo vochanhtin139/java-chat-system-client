@@ -27,12 +27,14 @@ public class Chat_Bottom extends javax.swing.JPanel {
         return user;
     }
 
-    public void setUser(Model_User_Account user) {
+    public void setUser(Model_User_Account user, int conversationID) {
         this.user = user;
+        this.conversationID = conversationID;
         panelMore.setUser(user);
     }
 
     private Model_User_Account user;
+    private int conversationID;
 
     public Chat_Bottom() {
         initComponents();
@@ -111,7 +113,7 @@ public class Chat_Bottom extends javax.swing.JPanel {
     private void eventSend(JIMSendTextPane txt) {
         String text = txt.getText().trim();
         if (!text.equals("")) {
-            Model_Send_Message message = new Model_Send_Message(MessageType.TEXT, Service.getInstance().getUser().getUserID(), user.getUserID(), text);
+            Model_Send_Message message = new Model_Send_Message(MessageType.TEXT, Service.getInstance().getUser().getUserID(), user.getUserID(), text, conversationID);
             send(message);
             PublicEvent.getInstance().getEventChat().sendMessage(message);
             txt.setText("");

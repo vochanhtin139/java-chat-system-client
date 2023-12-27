@@ -77,7 +77,7 @@ public class Chat extends javax.swing.JPanel {
 
     public void setUser(Model_User_Account user) {
         chatTitle.setUserName(user);
-        chatBottom.setUser(user);
+        chatBottom.setUser(user, user.getConversationID());
         chatBody.clearChat();
         
         Service.getInstance().getClient().emit("get_conversation_messages", user.getConversationID());

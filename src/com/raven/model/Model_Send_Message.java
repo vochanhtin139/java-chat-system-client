@@ -38,11 +38,28 @@ public class Model_Send_Message {
         this.text = text;
     }
 
+    public int getConversationID() {
+        return conversationID;
+    }
+
+    public void setConversationID(int conversationID) {
+        this.conversationID = conversationID;
+    }
+
     public Model_Send_Message(MessageType messageType, int fromUserID, int toUserID, String text) {
         this.messageType = messageType;
         this.fromUserID = fromUserID;
         this.toUserID = toUserID;
         this.text = text;
+        this.conversationID = -1;
+    }
+    
+    public Model_Send_Message(MessageType messageType, int fromUserID, int toUserID, String text, int conversationID) {
+        this.messageType = messageType;
+        this.fromUserID = fromUserID;
+        this.toUserID = toUserID;
+        this.text = text;
+        this.conversationID = conversationID;
     }
 
     public Model_Send_Message() {
@@ -52,6 +69,7 @@ public class Model_Send_Message {
     private int fromUserID;
     private int toUserID;
     private String text;
+    private int conversationID;
 
     public JSONObject toJsonObject() {
         try {
@@ -60,6 +78,7 @@ public class Model_Send_Message {
             json.put("fromUserID", fromUserID);
             json.put("toUserID", toUserID);
             json.put("text", text);
+            json.put("conversationID", conversationID);
             return json;
         } catch (JSONException e) {
             return null;

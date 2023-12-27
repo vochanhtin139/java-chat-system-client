@@ -3,6 +3,7 @@ package com.raven.form;
 
 import com.raven.component.item_People;
 import com.raven.component.item_People1;
+import com.raven.component.item_People_Friend;
 import com.raven.event.EventMenuLeft;
 import com.raven.event.EventMenuRight;
 import com.raven.event.PublicEvent;
@@ -134,7 +135,8 @@ public class Menu_Right extends javax.swing.JPanel {
 
         menuList.removeAll();
         for (Model_User_Account d : myFriendList) {
-            menuList.add(new item_People1(d, "Block"), "wrap");
+            menuList.add(new item_People_Friend(d), "wrap");
+//            menuList.add(new item_People(d, "Block"), "wrap");
         }
         refreshMenuList();
     }
