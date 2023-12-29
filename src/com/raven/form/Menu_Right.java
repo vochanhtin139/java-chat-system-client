@@ -12,8 +12,12 @@ import com.raven.model.Model_friendship_status;
 import com.raven.service.Service;
 import com.raven.swing.ScrollBar;
 import java.awt.Component;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -27,13 +31,67 @@ public class Menu_Right extends javax.swing.JPanel {
     private List<Model_User_Account> accounts;
     private List<Model_User_Account> myFriendList;
     private List<Model_User_Account> myBlockedList;
-    List<Model_friendship_status> relationshipStatus;
+    private List<Model_User_Account> mySearchedList;
+    private List<Model_friendship_status> relationshipStatus;
+    private String state = "";
 
     /**
      * Creates new form Menu_Left
      */
     public Menu_Right() {
         initComponents();
+        
+        state = "user";
+        
+        txtSearchField.setHintText("search for username or name...");
+//        txtSearchField.addKeyListener(new KeyAdapter() {
+//            @Override
+//            public void keyTyped(KeyEvent ke) {      
+////                if (ke.getKeyChar() == 10) {
+////                    
+////                }
+//                String searchText = txtSearchField.getText();
+//                System.out.println(searchText);
+//                Service.getInstance().getClient().emit("search_user", searchText);
+//            }
+//        });
+        
+        txtSearchField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateSearch();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateSearch();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updateSearch();
+            }
+
+            private void updateSearch() {
+                String searchText = txtSearchField.getText();
+                
+                if (searchText.trim().equals("")) {
+                    if (state.equals("user")) {
+                        showMessage();
+                    }
+                    else if (state.equals("friend")) {
+                        showGroup();
+                    }
+                    else if (state.equals("block")) {
+                        showBox();
+                    }
+                }
+                else
+                    // Use searchText or send it to the server
+                    Service.getInstance().getClient().emit("search_user", searchText);
+            }
+        });
+        
         sp.setVerticalScrollBar(new ScrollBar());
 //        menuList.setLayout(new MigLayout("fillx", "0[]0", "0[]0"));
     menuList.setLayout(new MigLayout("fillx"));
@@ -80,6 +138,19 @@ public class Menu_Right extends javax.swing.JPanel {
             @Override
             public void getYourBlockedList(List<Model_User_Account> users) {
                 myBlockedList = users;
+            }
+
+            @Override
+            public void getSearchedUser(List<Model_User_Account> users) {
+                menuList.removeAll();
+                
+                for (Model_User_Account d : users) {
+                    System.out.println(d.getUserName());
+                    menuList.add(new item_People(d), "wrap");
+                }
+                    
+                
+                refreshMenuList();
             }
         
         });
@@ -167,6 +238,8 @@ public class Menu_Right extends javax.swing.JPanel {
         menuBox = new com.raven.component.MenuButton();
         sp = new javax.swing.JScrollPane();
         menuList = new javax.swing.JLayeredPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtSearchField = new com.raven.swing.JIMSendTextPane();
 
         setBackground(new java.awt.Color(230, 230, 230));
 
@@ -223,6 +296,8 @@ public class Menu_Right extends javax.swing.JPanel {
 
         sp.setViewportView(menuList);
 
+        jScrollPane1.setViewportView(txtSearchField);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -230,7 +305,9 @@ public class Menu_Right extends javax.swing.JPanel {
             .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(sp)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sp)
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -243,7 +320,9 @@ public class Menu_Right extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sp)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sp, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -259,6 +338,7 @@ public class Menu_Right extends javax.swing.JPanel {
             menuGroup.setSelected(false);
             menuBox.setSelected(false);
             showMessage();
+            state = "user";
         }
     }//GEN-LAST:event_menuMessageActionPerformed
 
@@ -268,6 +348,7 @@ public class Menu_Right extends javax.swing.JPanel {
             menuGroup.setSelected(true);
             menuBox.setSelected(false);
             showGroup();
+            state = "friend";
         }
     }//GEN-LAST:event_menuGroupActionPerformed
 
@@ -277,17 +358,20 @@ public class Menu_Right extends javax.swing.JPanel {
             menuGroup.setSelected(false);
             menuBox.setSelected(true);
             showBox();
+            state = "block";
         }
     }//GEN-LAST:event_menuBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLayeredPane menu;
     private com.raven.component.MenuButton menuBox;
     private com.raven.component.MenuButton menuGroup;
     private javax.swing.JLayeredPane menuList;
     private com.raven.component.MenuButton menuMessage;
     private javax.swing.JScrollPane sp;
+    private com.raven.swing.JIMSendTextPane txtSearchField;
     // End of variables declaration//GEN-END:variables
 }

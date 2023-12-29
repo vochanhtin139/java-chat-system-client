@@ -21,4 +21,6 @@ public interface EventMenuRight {
     public void getYourFriendList(List<Model_User_Account> users);
     
     public void getYourBlockedList(List<Model_User_Account> users);
+    
+    public void getSearchedUser(List<Model_User_Account> users);
 }
