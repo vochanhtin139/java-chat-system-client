@@ -4,8 +4,14 @@
  */
 package com.raven.component;
 
+import com.raven.event.EventChatTitle;
+import com.raven.event.PublicEvent;
 import com.raven.model.Model_User_Account;
+import com.raven.model.Model_friendship;
+import com.raven.service.Service;
 import java.awt.Color;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,6 +37,15 @@ public class Chat_Title extends javax.swing.JPanel {
         } else {
             setStatusText("Offline");
         }
+        
+        List<Model_User_Account> users = Service.getInstance().getSpamList();
+        
+        for (Model_User_Account d : users)
+            if (d.getUserID() == user.getUserID()) {
+                btnSpam.setEnabled(false);
+                btnSpam.setText("MARKED AS SPAM");
+                break;
+            }
     }
 
     public void updateUser(Model_User_Account user) {
@@ -65,6 +80,7 @@ public class Chat_Title extends javax.swing.JPanel {
         layer = new javax.swing.JLayeredPane();
         lbName = new javax.swing.JLabel();
         lbStatus = new javax.swing.JLabel();
+        btnSpam = new javax.swing.JButton();
 
         layer.setLayout(new java.awt.GridLayout(0, 1));
 
@@ -77,26 +93,52 @@ public class Chat_Title extends javax.swing.JPanel {
         lbStatus.setText("Active now");
         layer.add(lbStatus);
 
+        btnSpam.setText("MARK AS SPAM");
+        btnSpam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSpamActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(layer, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+                .addComponent(layer, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSpam)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(layer)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(layer)
+                    .addComponent(btnSpam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSpamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSpamActionPerformed
+        int output = JOptionPane.showConfirmDialog(this
+               , "Are you sure to mark this as spam?"
+               ,"Warning"
+               ,JOptionPane.YES_NO_OPTION);
+
+            if(output == JOptionPane.YES_OPTION){
+                Model_friendship data = new Model_friendship(Service.getInstance().getUser().getUserID(), this.user.getUserID());
+                Service.getInstance().getClient().emit("report_user_spam", data.toJSONObject());
+                btnSpam.setEnabled(false);
+                btnSpam.setText("MARKED AS SPAM");
+            }
+    }//GEN-LAST:event_btnSpamActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSpam;
     private javax.swing.JLayeredPane layer;
     private javax.swing.JLabel lbName;
     private javax.swing.JLabel lbStatus;

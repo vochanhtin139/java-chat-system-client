@@ -19,6 +19,7 @@ public class Service {
     private final int PORT_NUMBER = 9999;
     private final String IP = "localhost";
     private Model_User_Account user;
+    private List<Model_User_Account> reportSpamList;
 
     public static Service getInstance() {
         if (instance == null) {
@@ -170,6 +171,20 @@ public class Service {
                 }
             });
             
+            client.on("received_spam_report_list", new Emitter.Listener() {
+                @Override
+                public void call(Object... os) {
+                    List<Model_User_Account> users = new ArrayList<>();
+                    for (Object o : os) {
+                        Model_User_Account u = new Model_User_Account(o);
+                        if (u.getUserID() != user.getUserID()) 
+                            users.add(u);        
+                    }
+//                    PublicEvent.getInstance().getEventChatTitle().checkSpamList(users);
+                    Service.getInstance().setSpamList(users);
+                }
+            });
+            
             client.open();
         } catch (URISyntaxException e) {
             error(e);
@@ -186,6 +201,14 @@ public class Service {
 
     public void setUser(Model_User_Account user) {
         this.user = user;
+    }
+    
+    public void setSpamList(List<Model_User_Account> users) {
+        this.reportSpamList = users;
+    }
+    
+    public List<Model_User_Account> getSpamList() {
+        return this.reportSpamList;
     }
 
     private void error(Exception e) {

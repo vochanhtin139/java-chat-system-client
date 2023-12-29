@@ -9,6 +9,7 @@ public class PublicEvent {
     private EventLogin eventLogin;
     private EventMenuLeft eventMenuLeft;
     private EventMenuRight eventMenuRight;
+    private EventChatTitle eventChatTitle;
 
     public static PublicEvent getInstance() {
         if (instance == null) {
@@ -17,8 +18,11 @@ public class PublicEvent {
         return instance;
     }
 
-    private PublicEvent() {
-
+    private PublicEvent() { 
+    }
+    
+    public void addEventChatTitle(EventChatTitle event) {
+        this.eventChatTitle = event;
     }
 
     public void addEventMain(EventMain event) {
@@ -47,6 +51,10 @@ public class PublicEvent {
 
     public EventMain getEventMain() {
         return eventMain;
+    }
+    
+    public EventChatTitle getEventChatTitle() {
+        return eventChatTitle;
     }
 
     public EventImageView getEventImageView() {
