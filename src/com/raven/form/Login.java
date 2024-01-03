@@ -78,17 +78,25 @@ public class Login extends javax.swing.JPanel {
 
             @Override
             public void goRegister() {
-                slide.show(1);
+                slide.show(2);
             }
 
             @Override
             public void goLogin() {
+                slide.show(1);
+            }
+            
+            @Override 
+            public void goForgetPassword() {
                 slide.show(0);
             }
         });
+        
+        P_ForgetPassword forgetPassword = new P_ForgetPassword();
         P_Login login = new P_Login();
         P_Register register = new P_Register();
-        slide.init(login, register);
+     
+        slide.init(forgetPassword, login, register);
     }
 
 

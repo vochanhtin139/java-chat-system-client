@@ -32,7 +32,7 @@ public class PanelSlide extends javax.swing.JPanel {
     private final Timer timer;
     private Component comExit;
     private Component comShow;
-    private int currentShowing;
+    private int currentShowing = 1;
     private boolean animateRight;
     private int animate = 1;
 
@@ -45,7 +45,7 @@ public class PanelSlide extends javax.swing.JPanel {
                 this.add(c);
             }
             //  get first componect to show on panel when init
-            Component show = list.get(0);
+            Component show = list.get(1);
             show.setVisible(true);
             show.setLocation(0, 0);
         }
