@@ -129,6 +129,8 @@ public class P_Register extends javax.swing.JPanel {
         
         if (userName.equals("")) {
             txtUser.grabFocus();
+        } else if (!userName.contains("@")) {
+            JOptionPane.showMessageDialog(null,"Please enter an email!");
         } else if (password.equals("")) {
             txtPass.grabFocus();
         } else if (!password.equals(confirmPassword)) {

@@ -4,8 +4,13 @@
  */
 package com.raven.form;
 
+import com.raven.event.EventMessage;
 import com.raven.event.PublicEvent;
 import com.raven.model.Model_Login;
+import com.raven.model.Model_Message;
+import com.raven.model.Model_Register;
+import com.raven.model.Model_ForgetPassword;
+import javax.swing.JOptionPane;
 
 public class P_ForgetPassword extends javax.swing.JPanel {
 
@@ -24,7 +29,7 @@ public class P_ForgetPassword extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtUser = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         cmdLogin = new javax.swing.JButton();
         cmdRegister = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -38,9 +43,9 @@ public class P_ForgetPassword extends javax.swing.JPanel {
 
         jLabel2.setText("Email");
 
-        txtUser.addActionListener(new java.awt.event.ActionListener() {
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserActionPerformed(evt);
+                txtEmailActionPerformed(evt);
             }
         });
 
@@ -75,7 +80,7 @@ public class P_ForgetPassword extends javax.swing.JPanel {
                     .addComponent(cmdRegister, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cmdLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtUser)
+                    .addComponent(txtEmail)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -87,7 +92,7 @@ public class P_ForgetPassword extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
@@ -99,14 +104,41 @@ public class P_ForgetPassword extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
-        PublicEvent.getInstance().getEventMain().showLoading(true);
-        try {
-            Thread.sleep(1000);
-        } catch (Exception e) {
+//        PublicEvent.getInstance().getEventMain().showLoading(true);
+//        try {
+//            Thread.sleep(1000);
+//        } catch (Exception e) {
+//            
+//        }
+        String email = txtEmail.getText().trim();
+        
+        if (email.equals("")) {
+            txtEmail.grabFocus();
+        } else if (!email.contains("@")) {
+            JOptionPane.showMessageDialog(null,"Please enter an email!");
+        } else {   
+//             random password
+            String password = PasswordGenerator.generateRandomPassword(8);
+            System.out.println(password);
+            
+            Model_ForgetPassword data = new Model_ForgetPassword(email, password);
+            
+            PublicEvent.getInstance().getEventLogin().forgetPassword(data, new EventMessage() {
+                @Override
+                public void callMessage(Model_Message message) {
+                    if (!message.isAction()) {
+                        JOptionPane.showMessageDialog(null,"Error");
+                    } else {                                            
+                        EmailSender.sendEmail(email, "Mật khẩu đăng nhập Hệ thống Chat", "Chào bạn,\n\nMật khẩu khôi phục đăng nhập của bạn là: " + password + "\n\nPTQ");
+                        
+                        JOptionPane.showMessageDialog(null,"Send password to your email successful!");
+                            
+                    }
+                }
+            });
             
         }
-//        PublicEvent.getInstance().getEventLogin().login(new Model_Login(txtUser.getText(), String.valueOf(txtPass.getPassword())));
-        System.out.println(txtUser.getText());
+//        System.out.println(txtEmail.getText());
 //        PublicEvent.getInstance().getEventMain().initChat();
     }//GEN-LAST:event_cmdLoginActionPerformed
 
@@ -114,9 +146,9 @@ public class P_ForgetPassword extends javax.swing.JPanel {
         PublicEvent.getInstance().getEventLogin().goLogin();
     }//GEN-LAST:event_cmdBackLoginActionPerformed
 
-    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserActionPerformed
+    }//GEN-LAST:event_txtEmailActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -125,6 +157,6 @@ public class P_ForgetPassword extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txtUser;
+    private javax.swing.JTextField txtEmail;
     // End of variables declaration//GEN-END:variables
 }
