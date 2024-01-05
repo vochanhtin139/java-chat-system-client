@@ -31,7 +31,7 @@ public class Chat_Title extends javax.swing.JPanel {
 
     public void setUserName(Model_User_Account user) {
         this.user = user;
-        lbName.setText(user.getUserName());
+        lbName.setText(user.getFullName());
         if (user.isStatus()) {
             statusActive();
         } else {
