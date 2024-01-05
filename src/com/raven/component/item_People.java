@@ -25,7 +25,8 @@ public class item_People extends javax.swing.JPanel {
     public item_People(Model_User_Account user) {
         this.user = user;
         initComponents();
-        lb.setText(user.getUserName());
+        lb.setText(user.getFullName());
+        lbStatus.setText(user.getUserName());
         activeStatus.setActive(user.isStatus());
         init();
     }

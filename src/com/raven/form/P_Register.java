@@ -75,7 +75,7 @@ public class P_Register extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("REGISTER");
 
-        jLabel2.setText("User Name");
+        jLabel2.setText("FullName");
 
         jLabel3.setText("Password");
 
@@ -145,25 +145,28 @@ public class P_Register extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRegisterActionPerformed
-        String username =txtUsername.getText().trim();
-        String email = txtUser.getText().trim();
+        String fullname =txtUsername.getText().trim();
+        String username = txtUser.getText().trim();
         String password = String.valueOf(txtPass.getPassword());
         String confirmPassword = String.valueOf(txtRePass.getPassword());
         
-        if (email.equals("")) {
+        if (username.equals("")) {
             txtUser.grabFocus();
-        } else if (!email.contains("@")) {
-            JOptionPane.showMessageDialog(null,"Please enter an email!");
+        } else if (!username.contains("@")) {
+            JOptionPane.showMessageDialog(null,"Please enter an username!");
         } else if (password.equals("")) {
             txtPass.grabFocus();
         } else if (!password.equals(confirmPassword)) {
             JOptionPane.showMessageDialog(null,"Password not match");
-        } else {   
+        }else if (fullname.equals("")) {
+            txtPass.grabFocus();
+        }
+        else {   
             // random password
 //            String password = PasswordGenerator.generateRandomPassword(8);
 //            System.out.println(password);
             
-            Model_Register data = new Model_Register(email, password);
+            Model_Register data = new Model_Register(fullname, username, password);
             
             PublicEvent.getInstance().getEventLogin().register(data, new EventMessage() {
                 @Override
@@ -171,7 +174,7 @@ public class P_Register extends javax.swing.JPanel {
                     if (!message.isAction()) {
                         JOptionPane.showMessageDialog(null,"Username Already Existed");
                     } else {                                            
-//                        EmailSender.sendEmail(email, "Mật khẩu đăng nhập Hệ thống Chat", "Chào bạn,\n\nMật khẩu đăng nhập của bạn là: " + password + "\n\nPTQ");
+//                        EmailSender.sendEmail(username, "Mật khẩu đăng nhập Hệ thống Chat", "Chào bạn,\n\nMật khẩu đăng nhập của bạn là: " + password + "\n\nPTQ");
                         
                         JOptionPane.showMessageDialog(null,"Register Successfully!");
                         //PublicEvent.getInstance().getEventMain().initChat();

@@ -28,7 +28,7 @@ public class item_People_Friend extends javax.swing.JPanel {
     public item_People_Friend(Model_User_Account user) {
         this.user = user;
         initComponents();
-        lb.setText(user.getUserName());
+        lb.setText(user.getFullName());
         activeStatus.setActive(user.isStatus());
         init();
     }
