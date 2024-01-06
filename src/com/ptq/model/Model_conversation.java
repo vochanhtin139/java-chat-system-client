@@ -1,5 +1,7 @@
 package com.ptq.model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -60,10 +62,18 @@ public class Model_conversation {
     }
 
     public String getTime() {
-        return time;
+        LocalDateTime dateTime = LocalDateTime.parse(this.time, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S"));
+        
+        // Define a formatter to specify the desired format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
+        
+        // Convert the LocalDateTime to a string in the desired format
+        String formattedTime = dateTime.format(formatter);
+        return formattedTime;
     }
 
     public void setTime(String time) {
+        
         this.time = time;
     }
     

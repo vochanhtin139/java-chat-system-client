@@ -46,20 +46,22 @@ public class Model_Send_Message {
         this.conversationID = conversationID;
     }
 
-    public Model_Send_Message(MessageType messageType, int fromUserID, int toUserID, String text) {
+    public Model_Send_Message(MessageType messageType, int fromUserID, int toUserID, String text,String time) {
         this.messageType = messageType;
         this.fromUserID = fromUserID;
         this.toUserID = toUserID;
         this.text = text;
         this.conversationID = -1;
+        this.time=time;
     }
     
-    public Model_Send_Message(MessageType messageType, int fromUserID, int toUserID, String text, int conversationID) {
+    public Model_Send_Message(MessageType messageType, int fromUserID, int toUserID, String text, int conversationID, String time) {
         this.messageType = messageType;
         this.fromUserID = fromUserID;
         this.toUserID = toUserID;
         this.text = text;
         this.conversationID = conversationID;
+        this.time=time;
     }
 
     public Model_Send_Message() {
@@ -70,6 +72,7 @@ public class Model_Send_Message {
     private int toUserID;
     private String text;
     private int conversationID;
+    private String time;
 
     public JSONObject toJsonObject() {
         try {
@@ -79,9 +82,24 @@ public class Model_Send_Message {
             json.put("toUserID", toUserID);
             json.put("text", text);
             json.put("conversationID", conversationID);
+            json.put("time", time);
             return json;
         } catch (JSONException e) {
             return null;
         }
+    }
+
+    /**
+     * @return the time
+     */
+    public String getTime() {
+        return time;
+    }
+
+    /**
+     * @param time the time to set
+     */
+    public void setTime(String time) {
+        this.time = time;
     }
 }

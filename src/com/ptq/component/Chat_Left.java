@@ -5,6 +5,8 @@
 package com.ptq.component;
 
 import java.awt.Color;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.Icon;
 
 /**
@@ -48,8 +50,9 @@ public class Chat_Left extends javax.swing.JLayeredPane {
         txt.setFile(fileName, fileSize);
     }
     
-    public void setTime() {
-        txt.setTime("11:55 AM");
+
+    public void setTime(String time) {
+        txt.setTime(time);
     }
 
     /**

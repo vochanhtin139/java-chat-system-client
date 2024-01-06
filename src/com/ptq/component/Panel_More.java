@@ -16,6 +16,8 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -121,7 +123,14 @@ public class Panel_More extends javax.swing.JPanel {
         cmd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                Model_Send_Message message = new Model_Send_Message(MessageType.EMOJI, Service.getInstance().getUser().getUserID(), user.getUserID(), data.getId() + "");
+                LocalTime currentTime = LocalTime.now();
+        
+        // Define a formatter to specify the desired format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
+        
+        // Convert the LocalTime to a string
+        String currentTimeString = currentTime.format(formatter);
+                Model_Send_Message message = new Model_Send_Message(MessageType.EMOJI, Service.getInstance().getUser().getUserID(), user.getUserID(), data.getId() + "",currentTimeString);
                 sendMessage(message);
                 PublicEvent.getInstance().getEventChat().sendMessage(message);
             }

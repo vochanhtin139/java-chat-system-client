@@ -60,11 +60,11 @@ public class Chat extends javax.swing.JPanel {
             public void getConversationMessage(List<Model_conversation> msg) {
                 for (Model_conversation mc: msg) {
                     if (mc.getSenderID() == chatTitle.getUser().getUserID()) {
-                        Model_Receive_Message mrm = new Model_Receive_Message(MessageType.TEXT, 2, mc.getContent());
+                        Model_Receive_Message mrm = new Model_Receive_Message(MessageType.TEXT, 2, mc.getContent(),mc.getTime());
                         chatBody.addItemLeft(mrm);
                     }
                     else {
-                        Model_Send_Message msm = new Model_Send_Message(MessageType.TEXT, 1, 2, mc.getContent());
+                        Model_Send_Message msm = new Model_Send_Message(MessageType.TEXT, 1, 2, mc.getContent(),mc.getTime());
                         chatBody.addItemRight(msm);
                     }
                 }

@@ -30,10 +30,11 @@ public class Model_Receive_Message {
         this.text = text;
     }
 
-    public Model_Receive_Message(MessageType messageType, int fromUserID, String text) {
+    public Model_Receive_Message(MessageType messageType, int fromUserID, String text, String time) {
         this.messageType = messageType;
         this.fromUserID = fromUserID;
         this.text = text;
+        this.time=time;
     }
 
     public Model_Receive_Message(Object json) {
@@ -50,6 +51,7 @@ public class Model_Receive_Message {
     private MessageType messageType;
     private int fromUserID;
     private String text;
+    private String time;
 
     public JSONObject toJsonObject() {
         try {
@@ -61,5 +63,19 @@ public class Model_Receive_Message {
         } catch (JSONException e) {
             return null;
         }
+    }
+
+    /**
+     * @return the time
+     */
+    public String getTime() {
+        return time;
+    }
+
+    /**
+     * @param time the time to set
+     */
+    public void setTime(String time) {
+        this.time = time;
     }
 }
