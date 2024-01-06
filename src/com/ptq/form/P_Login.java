@@ -38,7 +38,7 @@ public class P_Login extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("LOGIN");
 
-        jLabel2.setText("User Name");
+        jLabel2.setText("Email");
 
         jLabel3.setText("Password");
 

@@ -70,7 +70,7 @@ public class item_People1 extends javax.swing.JPanel {
         btnAddFriend = new javax.swing.JButton();
         lb = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(230, 230, 230));
+        setBackground(new java.awt.Color(255, 255, 255));
 
         imageAvatar1.setBorderSize(0);
         imageAvatar1.setImage(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/user.png"))); // NOI18N

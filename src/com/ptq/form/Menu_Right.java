@@ -241,15 +241,16 @@ public class Menu_Right extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtSearchField = new com.ptq.swing.JIMSendTextPane();
 
-        setBackground(new java.awt.Color(230, 230, 230));
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setText("Menu Left note");
 
         menu.setOpaque(true);
         menu.setLayout(new java.awt.GridLayout(1, 3));
 
-        menuMessage.setIconSelected(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/message_selected.png"))); // NOI18N
-        menuMessage.setIconSimple(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/message.png"))); // NOI18N
+        menuMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/addfriend_selected.png"))); // NOI18N
+        menuMessage.setIconSelected(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/addfriend_selected.png"))); // NOI18N
+        menuMessage.setIconSimple(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/addfriend.png"))); // NOI18N
         menuMessage.setSelected(true);
         menuMessage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,9 +259,9 @@ public class Menu_Right extends javax.swing.JPanel {
         });
         menu.add(menuMessage);
 
-        menuGroup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/group.png"))); // NOI18N
-        menuGroup.setIconSelected(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/group_selected.png"))); // NOI18N
-        menuGroup.setIconSimple(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/group.png"))); // NOI18N
+        menuGroup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/listfriends.png"))); // NOI18N
+        menuGroup.setIconSelected(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/listfriends_selected.png"))); // NOI18N
+        menuGroup.setIconSimple(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/listfriends.png"))); // NOI18N
         menuGroup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuGroupActionPerformed(evt);
@@ -268,9 +269,9 @@ public class Menu_Right extends javax.swing.JPanel {
         });
         menu.add(menuGroup);
 
-        menuBox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/box.png"))); // NOI18N
-        menuBox.setIconSelected(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/box_selected.png"))); // NOI18N
-        menuBox.setIconSimple(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/box.png"))); // NOI18N
+        menuBox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/block.png"))); // NOI18N
+        menuBox.setIconSelected(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/block_selected.png"))); // NOI18N
+        menuBox.setIconSimple(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/block.png"))); // NOI18N
         menuBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuBoxActionPerformed(evt);
@@ -280,7 +281,7 @@ public class Menu_Right extends javax.swing.JPanel {
 
         sp.setBorder(null);
 
-        menuList.setBackground(new java.awt.Color(230, 230, 230));
+        menuList.setBackground(new java.awt.Color(255, 255, 255));
         menuList.setOpaque(true);
 
         javax.swing.GroupLayout menuListLayout = new javax.swing.GroupLayout(menuList);
@@ -311,9 +312,9 @@ public class Menu_Right extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 91, Short.MAX_VALUE)
+                    .addGap(0, 95, Short.MAX_VALUE)
                     .addComponent(jLabel1)
-                    .addGap(0, 92, Short.MAX_VALUE)))
+                    .addGap(0, 95, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -2,6 +2,33 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/form/Menu_Left.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/form/Chat.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/component/Chat_Body.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/service/Service.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/component/Chat_Bottom.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/component/MenuButton.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/model/Model_conversation.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/component/Chat_Right.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/form/Menu_Right.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/form/View_Image.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/form/Loading.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/component/Panel_More.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/component/item_People_Friend.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/model/Model_Send_Message.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/form/PasswordGenerator.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/component/item_People.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/model/Model_Message.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/component/item_People1.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/main/Main.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/form/P_Register.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/component/Chat_Left.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/form/Login.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/form/P_Login.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/model/Model_Receive_Message.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/form/Home.java</file>
+            <file>file:/C:/TanPhuc/Nam3/HK1/Java/java-chat-system-client/src/com/ptq/event/EventChat.java</file>
+        </group>
     </open-files>
 </project-private>

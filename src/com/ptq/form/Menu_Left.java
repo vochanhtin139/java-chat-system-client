@@ -129,13 +129,14 @@ public class Menu_Left extends javax.swing.JPanel {
         sp = new javax.swing.JScrollPane();
         menuList = new javax.swing.JLayeredPane();
 
-        setBackground(new java.awt.Color(230, 230, 230));
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setText("Menu Left note");
 
         menu.setOpaque(true);
 
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Calisto MT", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 51, 204));
         jLabel3.setText("Conversations");
 
         menu.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -164,7 +165,7 @@ public class Menu_Left extends javax.swing.JPanel {
         sp.setBorder(null);
         sp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        menuList.setBackground(new java.awt.Color(230, 230, 230));
+        menuList.setBackground(new java.awt.Color(255, 255, 255));
         menuList.setOpaque(true);
 
         javax.swing.GroupLayout menuListLayout = new javax.swing.GroupLayout(menuList);

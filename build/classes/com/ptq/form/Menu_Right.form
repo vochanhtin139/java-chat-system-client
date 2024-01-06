@@ -3,7 +3,7 @@
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="e6" green="e6" red="e6" type="rgb"/>
+      <Color blue="ff" green="ff" red="ff" type="rgb"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -32,9 +32,9 @@
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="91" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="95" max="32767" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="92" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="95" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -77,11 +77,14 @@
       <SubComponents>
         <Component class="com.ptq.component.MenuButton" name="menuMessage">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/com/ptq/icon/addfriend_selected.png"/>
+            </Property>
             <Property name="iconSelected" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/ptq/icon/message_selected.png"/>
+              <Image iconType="3" name="/com/ptq/icon/addfriend_selected.png"/>
             </Property>
             <Property name="iconSimple" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/ptq/icon/message.png"/>
+              <Image iconType="3" name="/com/ptq/icon/addfriend.png"/>
             </Property>
             <Property name="selected" type="boolean" value="true"/>
           </Properties>
@@ -92,13 +95,13 @@
         <Component class="com.ptq.component.MenuButton" name="menuGroup">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/ptq/icon/group.png"/>
+              <Image iconType="3" name="/com/ptq/icon/listfriends.png"/>
             </Property>
             <Property name="iconSelected" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/ptq/icon/group_selected.png"/>
+              <Image iconType="3" name="/com/ptq/icon/listfriends_selected.png"/>
             </Property>
             <Property name="iconSimple" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/ptq/icon/group.png"/>
+              <Image iconType="3" name="/com/ptq/icon/listfriends.png"/>
             </Property>
           </Properties>
           <Events>
@@ -108,13 +111,13 @@
         <Component class="com.ptq.component.MenuButton" name="menuBox">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/ptq/icon/box.png"/>
+              <Image iconType="3" name="/com/ptq/icon/block.png"/>
             </Property>
             <Property name="iconSelected" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/ptq/icon/box_selected.png"/>
+              <Image iconType="3" name="/com/ptq/icon/block_selected.png"/>
             </Property>
             <Property name="iconSimple" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/ptq/icon/box.png"/>
+              <Image iconType="3" name="/com/ptq/icon/block.png"/>
             </Property>
           </Properties>
           <Events>
@@ -135,7 +138,7 @@
         <Container class="javax.swing.JLayeredPane" name="menuList">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e6" green="e6" red="e6" type="rgb"/>
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>

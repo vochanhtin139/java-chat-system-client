@@ -75,7 +75,7 @@ public class P_Register extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("REGISTER");
 
-        jLabel2.setText("FullName");
+        jLabel2.setText("Name");
 
         jLabel3.setText("Password");
 
