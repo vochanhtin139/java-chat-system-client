@@ -4,7 +4,6 @@
  */
 package com.ptq.component;
 
-import com.ptq.event.PublicEvent;
 import com.ptq.model.Model_User_Account;
 import com.ptq.model.Model_friendship;
 import com.ptq.service.Service;

@@ -5,25 +5,15 @@
 package com.ptq.component;
 
 import com.ptq.app.MessageType;
-import com.ptq.form.Chat;
 import com.ptq.model.Model_Receive_Message;
 import com.ptq.model.Model_Send_Message;
-import com.ptq.model.Model_conversation;
-import com.ptq.service.Service;
 import com.ptq.swing.ScrollBar;
 import java.awt.Adjustable;
 import java.awt.Color;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
 import net.miginfocom.swing.MigLayout;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  *

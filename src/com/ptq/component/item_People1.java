@@ -4,13 +4,9 @@
  */
 package com.ptq.component;
 
-import com.ptq.event.PublicEvent;
 import com.ptq.model.Model_User_Account;
 import com.ptq.model.Model_friendship;
 import com.ptq.service.Service;
-import java.awt.Color;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 /**
  *
@@ -21,7 +17,6 @@ public class item_People1 extends javax.swing.JPanel {
      public Model_User_Account getUser() {
         return user;
     }
-    private boolean mouseOver;
     private final Model_User_Account user;
 
     public item_People1(Model_User_Account user, String btnText) {
