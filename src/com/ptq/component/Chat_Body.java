@@ -5,7 +5,6 @@
 package com.ptq.component;
 
 import com.ptq.app.MessageType;
-import com.ptq.emoji.Emoji;
 import com.ptq.form.Chat;
 import com.ptq.model.Model_Receive_Message;
 import com.ptq.model.Model_Send_Message;
@@ -52,11 +51,6 @@ public class Chat_Body extends javax.swing.JPanel {
             item.setText(data.getText());
             item.setTime(data.getTime());
             body.add(item, "wrap, w 100::80%");
-        } else if (data.getMessageType() == MessageType.EMOJI) {
-            Chat_Left item = new Chat_Left();
-            item.setEmoji(Emoji.getInstance().getImoji(Integer.valueOf(data.getText())).getIcon());
-            item.setTime(data.getTime());
-            body.add(item, "wrap, w 100::80%");
         }
         repaint();
         revalidate();
@@ -89,11 +83,6 @@ public class Chat_Body extends javax.swing.JPanel {
         if (data.getMessageType() == MessageType.TEXT) {
             Chat_Right item = new Chat_Right();
             item.setText(data.getText());
-            body.add(item, "wrap, al right, w 100::80%");
-            item.setTime(data.getTime());
-        } else if (data.getMessageType() == MessageType.EMOJI) {
-            Chat_Right item = new Chat_Right();
-            item.setEmoji(Emoji.getInstance().getImoji(Integer.parseInt(data.getText())).getIcon());
             body.add(item, "wrap, al right, w 100::80%");
             item.setTime(data.getTime());
         }

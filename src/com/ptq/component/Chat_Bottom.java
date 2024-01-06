@@ -32,7 +32,6 @@ public class Chat_Bottom extends javax.swing.JPanel {
     public void setUser(Model_User_Account user, int conversationID) {
         this.user = user;
         this.conversationID = conversationID;
-        panelMore.setUser(user);
     }
 
     private Model_User_Account user;
@@ -83,33 +82,9 @@ public class Chat_Bottom extends javax.swing.JPanel {
                 eventSend(txt);
             }
         });
-        JButton cmdMore = new JButton();
-        cmdMore.setBorder(null);
-        cmdMore.setContentAreaFilled(false);
-        cmdMore.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        cmdMore.setIcon(new ImageIcon(getClass().getResource("/com/ptq/icon/more_disable.png")));
-        cmdMore.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                if (panelMore.isVisible()) {
-                    cmdMore.setIcon(new ImageIcon(getClass().getResource("/com/ptq/icon/more_disable.png")));
-                    panelMore.setVisible(false);
-                    mig.setComponentConstraints(panelMore, "dock south,h 0!");
-                    revalidate();
-                } else {
-                    cmdMore.setIcon(new ImageIcon(getClass().getResource("/com/ptq/icon/more.png")));
-                    panelMore.setVisible(true);
-                    mig.setComponentConstraints(panelMore, "dock south,h 170!");
-                    revalidate();
-                }
-            }
-        });
-        panel.add(cmdMore);
         panel.add(cmd);
         add(panel, "wrap");
-        panelMore = new Panel_More();
-        panelMore.setVisible(false);
-        add(panelMore, "dock south,h 0!");  //  set height 0
+
     }
 
     private void eventSend(JIMSendTextPane txt) {
@@ -164,7 +139,6 @@ public class Chat_Bottom extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     
     private MigLayout mig;
-    private Panel_More panelMore;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

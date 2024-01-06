@@ -129,7 +129,7 @@
                 <Component class="javax.swing.JButton" name="cmdMinimize">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/com/ptq/icon/minimize.png"/>
+                      <Image iconType="3" name="/com/ptq/icon/minus.png"/>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>

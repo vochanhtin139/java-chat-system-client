@@ -127,7 +127,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        cmdMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/minimize.png"))); // NOI18N
+        cmdMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ptq/icon/minus.png"))); // NOI18N
         cmdMinimize.setBorder(null);
         cmdMinimize.setContentAreaFilled(false);
         cmdMinimize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
