@@ -47,15 +47,13 @@ public class Menu_Left extends javax.swing.JPanel {
                         break;
                     }
                 }
-//                if (menuMessage.isSelected()) {
-//                    for (Component com : menuList.getComponents()) {
-//                        item_People item = (item_People) com;
-//                        if (item.getUser().getUserID() == userID) {
-//                            item.updateStatus();
-//                            break;
-//                        }
-//                    }
-//                }
+                   for (Component com : menuList.getComponents()) {
+                       item_People item = (item_People) com;
+                       if (item.getUser().getUserID() == userID) {
+                           item.updateStatus();
+                          break;
+                  }
+              }
             }
 
             @Override
@@ -67,16 +65,16 @@ public class Menu_Left extends javax.swing.JPanel {
                         break;
                     }
                 }
-//                if (menuMessage.isSelected()) {
-//                    for (Component com : menuList.getComponents()) {
-//                        item_People item = (item_People) com;
-//                        if (item.getUser().getUserID() == userID) {
-//                            item.updateStatus();
-//                            break;
-//                        }
-//                    }
-//                }
-            }
+                
+                    for (Component com : menuList.getComponents()) {
+                        item_People item = (item_People) com;
+                        if (item.getUser().getUserID() == userID) {
+                            item.updateStatus();
+                            break;
+                        }
+                    }
+                }
+            
         });
         showMessage();
     }
